@@ -4,6 +4,7 @@ gem "rails"
 
 gem "coffee-rails"
 gem "jquery-rails"
+gem "mongoid"
 gem "sass-rails"
 gem "turbolinks"
 gem "uglifier"
