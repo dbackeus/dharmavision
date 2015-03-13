@@ -12,6 +12,13 @@ gem "uglifier"
 group :development, :test do
   gem "byebug"
   gem "web-console"
+  gem "rspec-rails"
+end
+
+group :test do
+  gem "database_cleaner"
+  gem "mongoid-rspec"
+  gem "factory_girl_rails"
 end
 
 group :production do
