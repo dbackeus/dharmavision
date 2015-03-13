@@ -10,6 +10,14 @@ gem "sass-rails"
 gem "turbolinks"
 gem "uglifier"
 
+group :development do
+  gem "guard", require: false
+  gem "guard-rspec", require: false
+  gem "guard-pow", require: false
+  gem "terminal-notifier-guard", require: false
+  gem "rb-fsevent", require: false
+end
+
 group :development, :test do
   gem "byebug"
   gem "web-console"
