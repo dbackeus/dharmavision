@@ -3,6 +3,7 @@ source "https://rubygems.org"
 gem "rails"
 
 gem "coffee-rails"
+gem "dotenv-rails"
 gem "jquery-rails"
 gem "mongoid"
 gem "sass-rails"
