@@ -4,6 +4,7 @@ gem "rails"
 
 gem "bootstrap-sass"
 gem "coffee-rails"
+gem "devise"
 gem "dotenv-rails"
 gem "jquery-rails"
 gem "mongoid"
