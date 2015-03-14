@@ -28,6 +28,8 @@ module Dharmavision
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    config.action_mailer.default_url_options = { host: ENV.fetch("HOST") }
+
     config.generators do |g|
       g.view_specs false
       g.routing_specs false
