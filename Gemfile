@@ -2,11 +2,13 @@ source "https://rubygems.org"
 
 gem "rails"
 
+gem "bootstrap-sass"
 gem "coffee-rails"
 gem "dotenv-rails"
 gem "jquery-rails"
 gem "mongoid"
 gem "sass-rails"
+gem "simple_form"
 gem "turbolinks"
 gem "uglifier"
 
