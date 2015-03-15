@@ -16,6 +16,9 @@ Bundler.require(*Rails.groups)
 
 module Dharmavision
   class Application < Rails::Application
+    # Use Rack::Deflator for gzipped assets in dev env (in production we use heroku-deflater)
+    config.middleware.use Rack::Deflater if Rails.env.development?
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
