@@ -22,7 +22,9 @@ require "webmock/rspec"
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
+  config.include Devise::TestHelpers, type: :controller
   config.include Mongoid::Matchers, type: :model
+  config.include FactoryGirl::Syntax::Methods
 
   config.before do
     I18n.locale = :en
