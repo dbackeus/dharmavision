@@ -18,4 +18,7 @@ class User
   field :admin, type: Boolean, default: false
 
   has_many :ratings, dependent: :delete
+
+  index({email: 1}, unique: true)
+  index(reset_password_token: 1)
 end

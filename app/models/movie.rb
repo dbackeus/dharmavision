@@ -19,6 +19,8 @@ class Movie
   validates_uniqueness_of :imdb_id
   validate :validate_imdb_id, on: :create, if: :imdb_id
 
+  index({imdb_id: 1}, unique: true)
+
   def average_rating
     average = ratings.sum(&:rating).to_f / ratings.length
 
