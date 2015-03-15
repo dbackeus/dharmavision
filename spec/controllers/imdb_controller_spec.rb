@@ -6,7 +6,7 @@ describe ImdbController do
       stub_request(:get, "http://akas.imdb.com/find?q=spirited%20away%3Bs=tt").
         to_return(body: webmock("spirited_away_search.html"))
 
-      get :search, query: "spirited away"
+      get :search, query: "star wars"
 
       json_response = JSON.parse(response.body)
 

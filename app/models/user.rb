@@ -15,5 +15,7 @@ class User
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip, type: String
 
+  field :admin, type: Boolean, default: false
+
   has_many :ratings, dependent: :delete
 end

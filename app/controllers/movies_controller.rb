@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController
+  before_action :authenticate_user!, only: %i[new create destroy]
+
   def index
     @movies = Movie.all
   end
@@ -22,6 +24,8 @@ class MoviesController < ApplicationController
   end
 
   def destroy
+    raise "no way" unless current_user.admin?
+
     @movie = Movie.find(params[:id])
 
     @movie.destroy

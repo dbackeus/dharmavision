@@ -1,6 +1,6 @@
 <h1>Listing Movies</h1>
 
-<%= link_to "New Movie", new_movie_path, class: "btn btn-primary pull-right" %>
+<%= link_to "New Movie", new_movie_path, class: "btn btn-primary pull-right" if user_signed_in? %>
 
 <table class="table movie-table table-striped">
   <thead>
@@ -20,7 +20,9 @@
           <%= image_tag "raty/lib/images/star-on.png" %> <%= movie.average_rating %>
         </td>
         <td>
-          <%= link_to "Destroy", movie, method: :delete, data: { confirm: "Are you sure?" } %>
+          <% if user_signed_in? && current_user.admin? %>
+            <%= link_to "Destroy", movie, method: :delete, data: { confirm: "Are you sure?" } %>
+          <% end %>
         </td>
       </tr>
     <% end %>
