@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :movies, except: %i[edit update]
   resources :ratings, only: %i[create]
 
+  get "imdb/search"
+
   root "movies#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

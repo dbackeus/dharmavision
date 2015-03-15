@@ -16,6 +16,7 @@ gem "turbolinks"
 gem "uglifier"
 
 source "https://rails-assets.org" do
+  gem "rails-assets-bootstrap3-typeahead"
   gem "rails-assets-raty"
 end
 
