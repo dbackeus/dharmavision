@@ -7,14 +7,16 @@ class Movie
   field :year, type: Integer
   field :mpaa, type: String
 
-  has_many :ratings
+  embeds_many :titles, class_name: "MovieTitle"
+
+  has_many :ratings, dependent: :delete
+
+  before_validation :set_attributes_from_imdb, on: :create, if: -> { imdb_movie.title.present? }
 
   validates_presence_of :title
   validates_presence_of :imdb_id
   validates_uniqueness_of :imdb_id
   validate :validate_imdb_id, on: :create, if: :imdb_id
-
-  before_validation :set_attributes_from_imdb, on: :create
 
   def average_rating
     average = ratings.sum(&:rating).to_f / ratings.length
@@ -44,7 +46,9 @@ class Movie
     self.plot = imdb_movie.plot
     self.year = imdb_movie.year
     self.mpaa = imdb_movie.mpaa_rating
-  rescue OpenURI::HTTPError # This gets raised by Imdb::Movie when requesting year on nonexisting movie for unknown reason
+    self.titles = imdb_movie.also_known_as.map do |title|
+      MovieTitle.new(version: title[:version], title: title[:title])
+    end
   end
 
   def set_accepted_status

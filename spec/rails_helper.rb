@@ -33,6 +33,9 @@ RSpec.configure do |config|
     stub_request(:get, "http://akas.imdb.com/title/tt0169102/combined").
       to_return(body: webmock("lagaan.html"))
 
+    stub_request(:get, "http://akas.imdb.com/title/tt0169102/releaseinfo").
+      to_return(body: webmock("lagaan_releaseinfo.html"))
+
     DatabaseCleaner.start
   end
 
