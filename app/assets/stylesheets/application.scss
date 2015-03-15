@@ -16,6 +16,7 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import "raty/lib/jquery.raty";
 
 .user_icon {
   width: 26px;
@@ -23,4 +24,15 @@
 
 .imdb-link img {
   width: 129px;
+}
+
+.big-rating-star {
+  background: image-url("big-star.png");
+  background-size: cover;
+  width: 128px;
+  height: 128px;
+  text-align: center;
+  line-height: 138px;
+  font-size: 40px;
+  font-weight: bold;
 }

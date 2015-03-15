@@ -14,6 +14,10 @@ gem "simple_form"
 gem "turbolinks"
 gem "uglifier"
 
+source "https://rails-assets.org" do
+  gem "rails-assets-raty"
+end
+
 group :development do
   gem "guard", require: false
   gem "guard-rspec", require: false

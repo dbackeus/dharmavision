@@ -16,6 +16,16 @@ class Movie
 
   before_validation :set_attributes_from_imdb, on: :create
 
+  def average_rating
+    average = ratings.sum(&:rating).to_f / ratings.length
+
+    if average.nan?
+      0
+    else
+      average.round(1)
+    end
+  end
+
   def imdb_id=(id_or_url)
     if id_or_url =~ /tt(\d{1,})/
       super($1)
