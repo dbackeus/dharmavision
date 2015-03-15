@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :movies
+  resources :movies, except: %i[edit update]
   resources :ratings, only: %i[create]
 
   root "movies#index"
