@@ -23,9 +23,9 @@ class Movie
     average = ratings.sum(&:rating).to_f / ratings.length
 
     if average.nan?
-      0
+      0.0
     else
-      average.round(1)
+      average == 10 ? 10 : average.round(1)
     end
   end
 
