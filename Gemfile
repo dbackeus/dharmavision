@@ -20,6 +20,7 @@ group :development do
   gem "guard-pow", require: false
   gem "terminal-notifier-guard", require: false
   gem "rb-fsevent", require: false
+  gem "quiet_assets"
 end
 
 group :development, :test do
