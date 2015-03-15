@@ -21,4 +21,4 @@ $ ->
           movie_id: $(@).data("movie-id")
           rating: score
 
-      $.post "/ratings.json", params, (data) -> console.log("yeha")
+      $.post "/ratings.json", params
