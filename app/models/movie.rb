@@ -7,6 +7,8 @@ class Movie
   field :year, type: Integer
   field :mpaa, type: String
 
+  has_many :ratings
+
   validates_presence_of :title
   validates_presence_of :imdb_id
   validates_uniqueness_of :imdb_id

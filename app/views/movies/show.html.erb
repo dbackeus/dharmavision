@@ -2,6 +2,16 @@
 
 <%= simple_format @movie.plot %>
 
+<% if user_signed_in? %>
+  <%= simple_form_for user_rating, url: ratings_path, method: :post, remote: true do |f| %>
+    <%= f.hidden_field :movie_id %>
+
+    <%= f.input :rating, collection: (1..10).to_a, include_blank: false %>
+
+    <%= f.button :submit, class: "btn-primary" %>
+  <% end %>
+<% end %>
+
 <%= link_to image_tag("imdb-logo.png"), "http://www.imdb.com/title/tt#{@movie.imdb_id}/", target: "_blank", class: "imdb-link" %>
 
 <p><%= link_to 'Back', movies_path %></p>

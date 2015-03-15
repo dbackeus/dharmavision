@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :movies
+  resources :ratings, only: %i[create]
 
   root "movies#index"
 

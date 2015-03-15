@@ -44,7 +44,13 @@ class MoviesController < ApplicationController
   end
 
   private
+
   def movie_params
     params.require(:movie).permit(:imdb_id)
   end
+
+  def user_rating
+    @user_rating ||= current_user.ratings.where(movie: @movie).first || @movie.ratings.build
+  end
+  helper_method :user_rating
 end
