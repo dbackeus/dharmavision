@@ -1,5 +1,6 @@
 class Movie
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   field :title, type: String
   field :imdb_id, type: String
