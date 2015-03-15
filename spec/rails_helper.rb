@@ -4,6 +4,7 @@ require "spec_helper"
 require File.expand_path("../../config/environment", __FILE__)
 require "rspec/rails"
 # Add additional requires below this line. Rails is not loaded until this point!
+require "webmock/rspec"
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -26,6 +27,10 @@ RSpec.configure do |config|
   config.before do
     I18n.locale = :en
     Time.zone = "UTC"
+
+    stub_request(:get, "http://akas.imdb.com/title/tt0169102/combined").
+      to_return(body: webmock("lagaan.html"))
+
     DatabaseCleaner.start
   end
 
@@ -40,4 +45,8 @@ RSpec.configure do |config|
   config.render_views
 
   config.infer_spec_type_from_file_location!
+end
+
+def webmock(file)
+  File.read("spec/fixtures/webmock/#{file}")
 end

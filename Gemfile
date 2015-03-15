@@ -33,6 +33,7 @@ group :test do
   gem "database_cleaner"
   gem "mongoid-rspec"
   gem "factory_girl_rails"
+  gem "webmock"
 end
 
 group :production do

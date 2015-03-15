@@ -14,6 +14,9 @@ describe Movie do
 
   context "being created" do
     it "validates imdb ids to exist on imdb" do
+      stub_request(:get, "http://akas.imdb.com/title/tt234169102/combined").
+        to_return(status: 404)
+
       movie = Movie.new(imdb_id: "0169102")
       movie.save
 
