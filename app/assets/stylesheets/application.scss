@@ -39,12 +39,41 @@
   font-weight: bold;
 }
 
+.movie-table tbody tr {
+  td {
+    vertical-align: middle;
+  }
+}
+
 .movie-table-rank {
   width: 40px;
   text-align: center;
 }
+
 .movie-table-rating {
   font-weight: bold;
+}
+
+$thumb-height: 50px;
+$thumb-width: $thumb-height * 0.66;
+
+.movie-table-poster {
+  height: $thumb-height + 18px;
+  width: $thumb-width + 9px;
+
+  img {
+    position: absolute;
+    height: $thumb-height;
+    margin-top: -$thumb-height / 2;
+    clip: rect(0px 33px $thumb-height 0px);
+    margin-left: 8px;
+  }
+}
+
+.movie-table-posters {
+  img {
+    width: 34px;
+  }
 }
 
 .link-secondary {

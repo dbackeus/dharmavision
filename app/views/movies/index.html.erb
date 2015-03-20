@@ -5,6 +5,7 @@
 <table class="table movie-table table-striped">
   <thead>
     <tr>
+      <th></th>
       <th>Rank</th>
       <th>Title</th>
       <th>Rating</th>
@@ -16,6 +17,9 @@
   <tbody>
     <% @movies.each_with_index do |movie, index| %>
       <tr>
+        <td class="movie-table-poster">
+          <%= link_to image_tag(movie.rotten_poster), movie if movie.rotten_poster.present? %>
+        </td>
         <td class="movie-table-rank">
           <%= index + 1 %>
         </td>
