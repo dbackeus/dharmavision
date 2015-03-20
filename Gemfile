@@ -15,6 +15,7 @@ gem "jquery-turbolinks"
 gem "mongoid"
 gem "newrelic_rpm"
 gem "newrelic_moped"
+gem "omdb", github: "jvanbaarsen/omdb" # for imdb find method
 gem "rest-client"
 gem "rottentomatoes"
 gem "sass-rails"

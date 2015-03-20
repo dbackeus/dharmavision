@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/jvanbaarsen/omdb.git
+  revision: d345d7350f101a6053e5e677ff9c563ead7bab18
+  specs:
+    omdb (1.0.4)
+      json
+      rest-client
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -311,6 +319,7 @@ DEPENDENCIES
   mongoid-rspec
   newrelic_moped
   newrelic_rpm
+  omdb!
   puma
   quiet_assets
   rails

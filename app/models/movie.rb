@@ -6,6 +6,8 @@ class Movie
   field :imdb_id, type: String
   field :rotten_id, type: Integer
   field :rotten_poster, type: String
+  field :omdb_poster, type: String
+  field :omdb_plot, type: String
   field :plot, type: String
   field :year, type: Integer
   field :mpaa, type: String
@@ -19,6 +21,7 @@ class Movie
 
   before_validation :set_attributes_from_imdb, on: :create, if: -> { found_on_imdb? }
   before_validation :set_attributes_from_rotten_tomatoes, on: :create, if: -> { found_on_rotten_tomatoes? }
+  before_validation :set_attributes_from_omdb, on: :create, if: -> { found_on_omdb? }
 
   validates_presence_of :title
   validates_presence_of :imdb_id
@@ -62,6 +65,10 @@ class Movie
     end
   end
 
+  def omdb_movie
+    @omdb_movie ||= Omdb::Api.new.find("tt#{imdb_id}", false, "full")[:movie]
+  end
+
   def set_attributes_from_imdb
     self.title = imdb_movie.title
     self.plot = imdb_movie.plot
@@ -70,6 +77,11 @@ class Movie
     self.titles = imdb_movie.also_known_as.map do |title|
       MovieTitle.new(version: title[:version], title: title[:title])
     end
+  end
+
+  def set_attributes_from_omdb
+    self.omdb_plot = omdb_movie.plot
+    self.omdb_poster = omdb_movie.poster
   end
 
   def set_attributes_from_rotten_tomatoes
@@ -98,5 +110,9 @@ class Movie
 
   def found_on_rotten_tomatoes?
     found_on_imdb? && rotten_movie.present?
+  end
+
+  def found_on_omdb?
+    found_on_imdb? && omdb_movie.present?
   end
 end
