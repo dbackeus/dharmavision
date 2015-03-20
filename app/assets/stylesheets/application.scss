@@ -25,6 +25,7 @@
 
 .imdb-link img {
   width: 129px;
+  margin-top: 6px;
 }
 
 .big-rating-star {
@@ -58,4 +59,9 @@
 
 .form-control-feedback img {
   width: 60%;
+}
+
+.padded {
+  margin-top: $grid-gutter-width;
+  margin-bottom: $grid-gutter-width;
 }
