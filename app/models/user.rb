@@ -4,6 +4,7 @@ class User
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
+  field :name, type: String, default: ""
   field :email, type: String, default: ""
   field :encrypted_password, type: String, default: ""
   field :reset_password_token, type: String
@@ -19,6 +20,8 @@ class User
 
   has_many :ratings, dependent: :delete
   has_many :suggested_movies, class_name: "Movie"
+
+  validates_presence_of :name
 
   index({email: 1}, unique: true)
   index(reset_password_token: 1)
