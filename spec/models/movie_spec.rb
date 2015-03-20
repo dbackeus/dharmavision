@@ -92,5 +92,13 @@ describe Movie do
       movie.omdb_poster.should == "http://ia.media-imdb.com/images/M/MV5BMTIwODMwMzA5Ml5BMl5BanBnXkFtZTcwMTQxNTEyMQ@@._V1_SX300.jpg"
       movie.omdb_plot.should == "This is the story about the resilience shown by the Indians when they were under the British Rule. They are already taxed to the bone by the British and their cronies, but when Jack Russell announces that he will double the Lagaan (tax) from all villagers, they decide to oppose it. Leading the villagers is a handsome young man named Bhuvan, who challenges them to a game of cricket, a game that is to be played by veteran British cricket players, versus villagers, including Bhuvan himself, who have never played this game before, and do not even know a bat from a piece of wood. As the challenge is accepted, the interest grows and attracts Indians from all over the region, as well as the British from all over the country - as everyone gathers to see the 'fair play' that the British will display against their counter-parts, who are aided by none other than the sister, Elizabeth, of Captain Rusell."
     end
+
+    it "assigns metadata from tmdb" do
+      movie = create :movie, imdb_id: "0169102"
+
+      movie.tmdb_id.should == 19666
+      movie.tmdb_poster_path.should == "/iXpV2SCApjhLDvn9Usmk4hiQe4J.jpg"
+      movie.tmdb_backdrop_path.should == "/x0si3I9JKup9t6l88MF6S3lZ3Cd.jpg"
+    end
   end
 end

@@ -20,6 +20,7 @@ gem "rest-client"
 gem "rottentomatoes"
 gem "sass-rails"
 gem "simple_form"
+gem "themoviedb"
 gem "turbolinks"
 gem "uglifier"
 

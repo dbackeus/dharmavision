@@ -42,6 +42,9 @@ RSpec.configure do |config|
     stub_request(:get, "http://www.omdbapi.com/?i=tt0169102&plot=full&tomatoes=false").
       to_return(body: webmock("omdbapi.com/lagaan.json"))
 
+    stub_request(:get, "http://api.themoviedb.org/3/find/tt0169102?api_key=themoviedb_api_key&external_source=imdb_id").
+      to_return(body: webmock("themoviedb.org/find_lagaan.json"))
+
     DatabaseCleaner.start
   end
 

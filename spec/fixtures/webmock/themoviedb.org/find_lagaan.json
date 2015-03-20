@@ -1,0 +1,21 @@
+{
+   "tv_season_results" : [],
+   "tv_results" : [],
+   "movie_results" : [
+      {
+         "popularity" : 0.0254281636793157,
+         "title" : "Lagaan: Once Upon a Time in India",
+         "poster_path" : "/iXpV2SCApjhLDvn9Usmk4hiQe4J.jpg",
+         "video" : false,
+         "adult" : false,
+         "vote_count" : 27,
+         "id" : 19666,
+         "release_date" : "2001-06-15",
+         "backdrop_path" : "/x0si3I9JKup9t6l88MF6S3lZ3Cd.jpg",
+         "original_title" : "Lagaan: Once Upon a Time in India",
+         "vote_average" : 7.5
+      }
+   ],
+   "person_results" : [],
+   "tv_episode_results" : []
+}
