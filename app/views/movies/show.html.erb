@@ -7,9 +7,12 @@
 </div>
 
 <% if user_signed_in? %>
-  <strong>Your rating:</strong>
-  <div data-raty data-movie-id="<%= @movie.id %>" data-score="<%= user_rating.rating || 0 %>"></div>
-  <div id="rating-target"></div>
+  <p>
+    <strong>Your rating:</strong><br>
+    <span data-raty data-movie-id="<%= @movie.id %>" data-score="<%= user_rating.rating || 0 %>"></span>
+    <span class="raty-target"></span>
+    <%= image_tag "spinner.gif", class: "raty-pending" %>
+  </p>
 <% end %>
 
 <%= link_to image_tag("imdb-logo.png"), "http://www.imdb.com/title/tt#{@movie.imdb_id}/", target: "_blank", class: "imdb-link" %>

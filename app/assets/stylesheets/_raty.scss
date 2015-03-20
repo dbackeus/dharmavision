@@ -1,0 +1,16 @@
+.raty-target {
+  text-align: right;
+  width: 36px;
+  display: inline-block;
+  color: lighten($gray-base, 80%);
+
+  .raty-target-score {
+    color: $gray-base;
+  }
+}
+
+.raty-pending {
+  display: none;
+  width: 16px;
+  margin-left: 4px;
+}

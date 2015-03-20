@@ -5,22 +5,35 @@ $ ->
     starOn: "<%= image_path('raty/lib/images/star-on.png') %>"
     number: 10
     hints: [
-      "Click to rate 1"
-      "Click to rate 2"
-      "Click to rate 3"
-      "Click to rate 4"
-      "Click to rate 5"
-      "Click to rate 6"
-      "Click to rate 7"
-      "Click to rate 8"
-      "Click to rate 9"
-      "Click to rate 10"
+      "1"
+      "2"
+      "3"
+      "4"
+      "5"
+      "6"
+      "7"
+      "8"
+      "9"
+      "10"
     ],
+    target: -> ".raty-target"
+    targetFormat: "<span class='raty-target-score'>{score}</span>/10"
+    targetKeep: true
     score: -> $(@).data("score")
     click: (score, e) ->
+      $(".raty-pending").fadeIn()
+      $(".raty-success").hide()
+      $(".raty-fail").hide()
+
       params =
         rating:
           movie_id: $(@).data("movie-id")
           rating: score
 
-      $.post "/ratings.json", params
+      request = $.post "/ratings.json", params
+      request.success ->
+        $(".raty-pending").fadeOut(-> $(".raty-success").fadeIn())
+      request.fail ->
+        $(".raty-pending").fadeOut(-> $(".raty-fail").fadeIn())
+
+
