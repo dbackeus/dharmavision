@@ -23,5 +23,15 @@ describe MoviesController do
         response.should have_http_status(200)
       end
     end
+
+    context "as json" do
+      it "renders json" do
+        get :show, format: :json, id: movie.id
+
+        response.should have_http_status(200)
+
+        JSON.parse(response.body)["id"].should == movie.id.to_s
+      end
+    end
   end
 end
