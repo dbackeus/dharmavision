@@ -72,7 +72,7 @@ describe Movie do
       movie = create :movie, imdb_id: "0169102"
 
       movie.rotten_id.should == 10306
-      movie.rotten_poster.should == "http://resizing.flixster.com/3Cm7uazgitpnDsbB9jAjwfddpeU=/54x78/dkpu1ddg7pbsk.cloudfront.net/movie/10/87/07/10870712_ori.jpg"
+      movie.rotten_poster.should == "https://resizing.flixster.com/3Cm7uazgitpnDsbB9jAjwfddpeU=/54x78/dkpu1ddg7pbsk.cloudfront.net/movie/10/87/07/10870712_ori.jpg"
     end
 
     context "when movie doesn't exist on rotten tomatoes" do

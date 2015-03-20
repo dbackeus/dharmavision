@@ -74,7 +74,7 @@ class Movie
 
   def set_attributes_from_rotten_tomatoes
     self.rotten_id = rotten_movie.id
-    self.rotten_poster = rotten_movie.posters.detailed
+    self.rotten_poster = rotten_movie.posters.detailed.gsub(/https?/, "https")
   end
 
   def set_accepted_status
