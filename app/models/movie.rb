@@ -39,6 +39,10 @@ class Movie
     end
   end
 
+  def serializable_hash(options = {})
+    super.merge(average_rating: average_rating, id: id.to_s).except(:_id)
+  end
+
   private
   def imdb_movie
     @imdb_movie ||= Imdb::Movie.new(imdb_id)

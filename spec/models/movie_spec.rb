@@ -12,6 +12,22 @@ describe Movie do
     end
   end
 
+  describe "#serializable_hash" do
+    it "includes the average rating" do
+      movie = Movie.new
+      expect(movie).to receive(:average_rating).and_return(5.7)
+
+      movie.serializable_hash.should include average_rating: 5.7
+    end
+
+    it "replaces _id with id as string" do
+      movie = Movie.new(id: oid)
+
+      movie.serializable_hash.should include id: oid.to_s
+      movie.serializable_hash.has_key?(:_id).should == false
+    end
+  end
+
   context "being created" do
     it "validates imdb ids to exist on imdb" do
       stub_request(:get, "http://akas.imdb.com/title/tt234169102/combined").

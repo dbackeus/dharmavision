@@ -1,3 +1,7 @@
+refreshAverageRating = (movieId) ->
+  $.get("/movies/#{movieId}.json").success (movie) ->
+    $(".big-rating-star").html(movie.average_rating)
+
 $ ->
   $("[data-raty]").raty
     path: ""
@@ -25,14 +29,17 @@ $ ->
       $(".raty-success").hide()
       $(".raty-fail").hide()
 
+      movieId = $(@).data("movie-id")
+
       params =
         rating:
-          movie_id: $(@).data("movie-id")
+          movie_id: movieId
           rating: score
 
       request = $.post "/ratings.json", params
       request.success ->
         $(".raty-pending").fadeOut(-> $(".raty-success").fadeIn())
+        refreshAverageRating(movieId)
       request.fail ->
         $(".raty-pending").fadeOut(-> $(".raty-fail").fadeIn())
 

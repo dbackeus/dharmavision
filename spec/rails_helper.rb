@@ -55,3 +55,7 @@ end
 def webmock(file)
   File.read("spec/fixtures/webmock/#{file}")
 end
+
+def oid
+  BSON::ObjectId.from_string("550c0b5d446176147d000000")
+end
