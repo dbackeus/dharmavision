@@ -152,7 +152,10 @@ GEM
     multi_json (1.11.0)
     nenv (0.2.0)
     netrc (0.10.3)
-    newrelic_rpm (3.11.0.283)
+    newrelic_moped (0.0.13)
+      moped
+      newrelic_rpm (>= 3.7, < 3.11)
+    newrelic_rpm (3.10.0.279)
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
     notiffany (0.0.6)
@@ -302,6 +305,7 @@ DEPENDENCIES
   jquery-turbolinks
   mongoid
   mongoid-rspec
+  newrelic_moped
   newrelic_rpm
   puma
   quiet_assets
