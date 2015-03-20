@@ -34,4 +34,18 @@ describe MoviesController do
       end
     end
   end
+
+  describe "POST create" do
+    before { sign_in user }
+
+    context "with an existing movie" do
+      it "redirects to movie with a notice" do
+        movie = create :movie
+
+        post :create, movie: { imdb_id: movie.imdb_id }
+
+        response.should redirect_to movie_path(movie)
+      end
+    end
+  end
 end

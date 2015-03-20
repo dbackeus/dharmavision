@@ -23,6 +23,9 @@ class MoviesController < ApplicationController
 
     if @movie.save
       redirect_to @movie, notice: "Movie was successfully created."
+    elsif @movie.errors[:imdb_id].include?("is already taken")
+      existing_movie = Movie.find_by(imdb_id: @movie.imdb_id)
+      redirect_to movie_path(existing_movie), notice: "The movie had already been added, here it is..."
     else
       render :new
     end
