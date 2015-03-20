@@ -21,7 +21,7 @@
     <span class="raty-target"></span>
     <%= image_tag "spinner.gif", class: "raty-pending" %>
   <% else %>
-    <p>You must <%= link_to "Sign in", new_user_session_path %> to add a rating...</p>
+    <p><%= link_to "Sign in", new_user_session_path %> to add a rating...</p>
   <% end %>
 </div>
 
