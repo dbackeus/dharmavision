@@ -1,6 +1,8 @@
 $ ->
   $("[data-raty]").raty
-    path: "/assets/raty/lib/images"
+    path: ""
+    starOff: "<%= image_path('raty/lib/images/star-off.png') %>"
+    starOn: "<%= image_path('raty/lib/images/star-on.png') %>"
     number: 10
     hints: [
       "Click to rate 1"
