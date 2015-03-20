@@ -1,6 +1,14 @@
-<h1><%= @movie.title %></h1>
-
-<p class="lead"><%= @movie.plot %></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4">
+      <%= image_tag @movie.poster_url, class: "movie-poster" if @movie.poster_url %>
+    </div>
+    <div class="col-sm-8">
+      <h1><%= @movie.title %></h1>
+      <p class="lead"><%= @movie.plot %></p>
+    </div>
+  </div>
+</div>
 
 <div class="big-rating-star center-block">
   <%= @movie.average_rating %>
