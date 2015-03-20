@@ -5,6 +5,8 @@ describe Movie do
   it { is_expected.to validate_presence_of :imdb_id }
   it { is_expected.to validate_uniqueness_of :imdb_id }
 
+  specify { Movie.new.average_rating.should == 0.0 }
+
   describe "#imdb_id=" do
     it "parses the imdb id from imdb urls if given a url" do
       Movie.new(imdb_id: "0169102").imdb_id.should == "0169102"
@@ -13,13 +15,6 @@ describe Movie do
   end
 
   describe "#serializable_hash" do
-    it "includes the average rating" do
-      movie = Movie.new
-      expect(movie).to receive(:average_rating).and_return(5.7)
-
-      movie.serializable_hash.should include average_rating: 5.7
-    end
-
     it "replaces _id with id as string" do
       movie = Movie.new(id: oid)
 

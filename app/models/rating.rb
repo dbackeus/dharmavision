@@ -12,4 +12,12 @@ class Rating
   validates_presence_of :user
   validates_inclusion_of :rating, in: 1..10
   validates_uniqueness_of :movie_id, on: :create, scope: :user_id
+
+  after_save :update_movie_average_rating
+
+  private
+
+  def update_movie_average_rating
+    movie.refresh_average_rating
+  end
 end

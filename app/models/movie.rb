@@ -7,6 +7,7 @@ class Movie
   field :plot, type: String
   field :year, type: Integer
   field :mpaa, type: String
+  field :average_rating, type: Float, default: 0.0
 
   embeds_many :titles, class_name: "MovieTitle"
 
@@ -20,15 +21,10 @@ class Movie
   validate :validate_imdb_id, on: :create, if: :imdb_id
 
   index({imdb_id: 1}, unique: true)
+  index({average_rating: 1})
 
-  def average_rating
-    average = ratings.sum(&:rating).to_f / ratings.length
-
-    if average.nan?
-      0.0
-    else
-      average == 10 ? 10 : average.round(1)
-    end
+  def refresh_average_rating
+    update_attributes!(average_rating: aggregate_average_rating)
   end
 
   def imdb_id=(id_or_url)
@@ -40,7 +36,7 @@ class Movie
   end
 
   def serializable_hash(options = {})
-    super.merge(average_rating: average_rating, id: id.to_s).except(:_id)
+    super.merge(id: id.to_s).except(:_id)
   end
 
   private
@@ -64,5 +60,12 @@ class Movie
 
   def validate_imdb_id
     errors[:imdb_id] << "needs to be a valid url" unless imdb_movie.title.present?
+  end
+
+  def aggregate_average_rating
+    Rating.collection.aggregate(
+      ["$match" => { "movie_id" => id }],
+      ["$group" => { "_id" => "$movie_id", "average_rating" => { "$avg" => "$rating" }}]
+    ).first["average_rating"]
   end
 end
