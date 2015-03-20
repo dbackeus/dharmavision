@@ -15,7 +15,7 @@ class Movie
 
   has_many :ratings, dependent: :delete
 
-  before_validation :set_attributes_from_imdb, on: :create, if: -> { imdb_movie.title.present? }
+  before_validation :set_attributes_from_imdb, on: :create, if: -> { found_on_imdb? }
 
   validates_presence_of :title
   validates_presence_of :imdb_id
@@ -62,7 +62,7 @@ class Movie
   end
 
   def validate_imdb_id
-    errors[:imdb_id] << "needs to be a valid url" unless imdb_movie.title.present?
+    errors[:imdb_id] << "needs to be a valid imdb id or url" unless found_on_imdb?
   end
 
   def aggregate_average_rating
@@ -70,5 +70,9 @@ class Movie
       ["$match" => { "movie_id" => id }],
       ["$group" => { "_id" => "$movie_id", "average_rating" => { "$avg" => "$rating" }}]
     ).first["average_rating"]
+  end
+
+  def found_on_imdb?
+    imdb_movie.title.present?
   end
 end
