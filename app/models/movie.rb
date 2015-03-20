@@ -4,6 +4,8 @@ class Movie
 
   field :title, type: String
   field :imdb_id, type: String
+  field :rotten_id, type: Integer
+  field :rotten_poster, type: String
   field :plot, type: String
   field :year, type: Integer
   field :mpaa, type: String
@@ -16,6 +18,7 @@ class Movie
   has_many :ratings, dependent: :delete
 
   before_validation :set_attributes_from_imdb, on: :create, if: -> { found_on_imdb? }
+  before_validation :set_attributes_from_rotten_tomatoes, on: :create, if: -> { found_on_rotten_tomatoes? }
 
   validates_presence_of :title
   validates_presence_of :imdb_id
@@ -47,6 +50,18 @@ class Movie
     @imdb_movie ||= Imdb::Movie.new(imdb_id)
   end
 
+  def rotten_movie
+    return @rotten_movie if @rotten_movie
+
+    movie = RottenTomatoes::RottenMovie.find imdb: imdb_id
+
+    if movie.error
+      nil
+    else
+      @rotten_movie = movie
+    end
+  end
+
   def set_attributes_from_imdb
     self.title = imdb_movie.title
     self.plot = imdb_movie.plot
@@ -55,6 +70,11 @@ class Movie
     self.titles = imdb_movie.also_known_as.map do |title|
       MovieTitle.new(version: title[:version], title: title[:title])
     end
+  end
+
+  def set_attributes_from_rotten_tomatoes
+    self.rotten_id = rotten_movie.id
+    self.rotten_poster = rotten_movie.posters.detailed
   end
 
   def set_accepted_status
@@ -74,5 +94,9 @@ class Movie
 
   def found_on_imdb?
     imdb_movie.title.present?
+  end
+
+  def found_on_rotten_tomatoes?
+    found_on_imdb? && rotten_movie.present?
   end
 end

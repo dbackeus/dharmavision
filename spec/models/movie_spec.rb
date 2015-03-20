@@ -32,12 +32,12 @@ describe Movie do
       movie = Movie.new(imdb_id: "0169102")
       movie.save
 
-      movie.errors[:imdb_id].should_not include "needs to be a valid url"
+      movie.errors[:imdb_id].should_not include "needs to be a valid imdb id or url"
 
       movie = Movie.new(imdb_id: "234169102")
       movie.save
 
-      movie.errors[:imdb_id].should include "needs to be a valid url"
+      movie.errors[:imdb_id].should include "needs to be a valid imdb id or url"
     end
 
     it "assigns metadata from imdb" do
@@ -66,6 +66,24 @@ describe Movie do
         MovieTitle.new(version: "Sweden (DVD title)", title: "Lagaan - Det var en gång i Indien"),
         MovieTitle.new(version: "World-wide (English title) (informal literal title)", title: "Land Tax"),
       ].to_json
+    end
+
+    it "assigns metadata from rotten tomatoes" do
+      movie = create :movie, imdb_id: "0169102"
+
+      movie.rotten_id.should == 10306
+      movie.rotten_poster.should == "http://resizing.flixster.com/3Cm7uazgitpnDsbB9jAjwfddpeU=/54x78/dkpu1ddg7pbsk.cloudfront.net/movie/10/87/07/10870712_ori.jpg"
+    end
+
+    context "when movie doesn't exist on rotten tomatoes" do
+      it "doesn't set any metadata" do
+        stub_request(:get, "http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=rotten_tomatoes_api_key&id=0169102&type=imdb").
+          to_return(body: { "error" => "Could not find a movie with the specified id" }.to_json)
+
+        movie = create :movie, imdb_id: "0169102"
+
+        movie.rotten_id.should be_nil
+      end
     end
   end
 end
