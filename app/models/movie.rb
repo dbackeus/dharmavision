@@ -11,12 +11,15 @@ class Movie
 
   embeds_many :titles, class_name: "MovieTitle"
 
+  belongs_to :creator, class_name: "User"
+
   has_many :ratings, dependent: :delete
 
   before_validation :set_attributes_from_imdb, on: :create, if: -> { imdb_movie.title.present? }
 
   validates_presence_of :title
   validates_presence_of :imdb_id
+  validates_presence_of :creator
   validates_uniqueness_of :imdb_id
   validate :validate_imdb_id, on: :create, if: :imdb_id
 

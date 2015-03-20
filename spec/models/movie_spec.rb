@@ -3,6 +3,7 @@ require "rails_helper"
 describe Movie do
   it { is_expected.to validate_presence_of :title }
   it { is_expected.to validate_presence_of :imdb_id }
+  it { is_expected.to validate_presence_of :creator }
   it { is_expected.to validate_uniqueness_of :imdb_id }
 
   specify { Movie.new.average_rating.should == 0.0 }
@@ -40,7 +41,7 @@ describe Movie do
     end
 
     it "assigns metadata from imdb" do
-      movie = Movie.create!(imdb_id: "0169102")
+      movie = create :movie, imdb_id: "0169102"
 
       movie.title.should == "Lagaan: Once Upon a Time in India"
       movie.plot.should == "The people of a small village in Victorian India stake their future on a game of cricket against their ruthless British rulers..."

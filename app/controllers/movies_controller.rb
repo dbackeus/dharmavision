@@ -19,10 +19,10 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movie = Movie.new(movie_params)
+    @movie = Movie.new movie_params.merge(creator: current_user)
 
     if @movie.save
-      redirect_to @movie, notice: "Movie was successfully created."
+      redirect_to @movie, notice: "Movie was successfully created. Don't forget to add your rating!"
     elsif @movie.errors[:imdb_id].include?("is already taken")
       existing_movie = Movie.find_by(imdb_id: @movie.imdb_id)
       redirect_to movie_path(existing_movie), notice: "The movie had already been added, here it is..."

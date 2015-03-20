@@ -18,6 +18,7 @@ class User
   field :admin, type: Boolean, default: false
 
   has_many :ratings, dependent: :delete
+  has_many :suggested_movies, class_name: "Movie"
 
   index({email: 1}, unique: true)
   index(reset_password_token: 1)

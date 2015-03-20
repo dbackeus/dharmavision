@@ -9,5 +9,6 @@ FactoryGirl.define do
 
   factory :movie do
     imdb_id "0169102"
+    association :creator, factory: :user
   end
 end
