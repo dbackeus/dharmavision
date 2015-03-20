@@ -1,8 +1,11 @@
 <h1>Add Movie</h1>
 
-<div class="form-group">
+<div class="form-group has-feedback">
   <label class="control-label" for="imdb-title">Title</label>
   <input class="form-control" type="text" id="imdb-title" autocomplete="off">
+  <span class="form-control-feedback" aria-hidden="true">
+    <%= image_tag "spinner.gif" %>
+  </span>
   <p class="help-block">
     Start typing the English name of the movie you wish to add and select it from the list fetched from
     <a href="http://imdb.com" target="_blank">imdb.com</a>
