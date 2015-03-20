@@ -24,6 +24,17 @@ describe Movie do
     end
   end
 
+  describe "#poster_url" do
+    it "generates url from tmdb poster path and given size" do
+      movie = Movie.new
+      movie.poster_url.should be_nil
+
+      movie.tmdb_poster_path = "/foo.jpg"
+      movie.poster_url.should == "https://image.tmdb.org/t/p/w500/foo.jpg"
+      movie.poster_url("w92").should == "https://image.tmdb.org/t/p/w92/foo.jpg"
+    end
+  end
+
   context "being created" do
     it "validates imdb ids to exist on imdb" do
       stub_request(:get, "http://akas.imdb.com/title/tt234169102/combined").

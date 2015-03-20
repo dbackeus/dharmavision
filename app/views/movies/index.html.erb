@@ -18,7 +18,7 @@
     <% @movies.each_with_index do |movie, index| %>
       <tr>
         <td class="movie-table-poster">
-          <%= link_to image_tag(movie.rotten_poster), movie if movie.rotten_poster.present? %>
+          <%= link_to image_tag(movie.poster_url("w92")), movie if movie.poster_url.present? %>
         </td>
         <td class="movie-table-rank">
           <%= index + 1 %>

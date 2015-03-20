@@ -36,6 +36,12 @@ class Movie
   index({imdb_id: 1}, unique: true)
   index({average_rating: 1})
 
+  def poster_url(size = "w500")
+    return nil unless tmdb_poster_path.present?
+
+    "#{THEMOVIEDB_CONFIG['secure_base_url']}#{size}#{tmdb_poster_path}"
+  end
+
   def refresh_average_rating
     update_attributes!(average_rating: aggregate_average_rating)
   end
