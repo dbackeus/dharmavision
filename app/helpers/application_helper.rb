@@ -14,4 +14,8 @@ module ApplicationHelper
     hash = Digest::MD5.hexdigest(email)
     "https://www.gravatar.com/avatar/#{hash}"
   end
+
+  def admin?
+    user_signed_in? && current_user.admin?
+  end
 end

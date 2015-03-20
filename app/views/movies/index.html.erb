@@ -1,29 +1,35 @@
-<h1>Listing Movies</h1>
-
 <%= link_to "New Movie", new_movie_path, class: "btn btn-primary pull-right" if user_signed_in? %>
+
+<h1>Listing Movies</h1>
 
 <table class="table movie-table table-striped">
   <thead>
     <tr>
+      <th>Rank</th>
       <th>Title</th>
       <th>Rating</th>
-      <th></th>
+      <% if admin? %>
+        <th>Admin</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
-    <% @movies.each do |movie| %>
+    <% @movies.each_with_index do |movie, index| %>
       <tr>
-        <td>
+        <td class="movie-table-rank">
+          <%= index + 1 %>
+        </td>
+        <td class="movie-table-title">
           <%= link_to movie.title, movie %> (<%= movie.year %>)
         </td>
-        <td class="rating">
+        <td class="movie-table-ranking">
           <%= image_tag "raty/lib/images/star-on.png" %> <%= movie.average_rating %>
         </td>
-        <td>
-          <% if user_signed_in? && current_user.admin? %>
-            <%= link_to "Destroy", movie, method: :delete, data: { confirm: "Are you sure?" } %>
-          <% end %>
-        </td>
+        <% if admin? %>
+          <td>
+              <%= link_to "Destroy", movie, method: :delete, data: { confirm: "Delete #{movie.title}?" } %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

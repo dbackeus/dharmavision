@@ -14,8 +14,9 @@
  */
 
 @import "bootstrap-sprockets";
+@import "bootstrap/variables";
+@import "variables";
 @import "bootstrap";
-@import "raty/lib/jquery.raty";
 @import "raty";
 
 .user_icon {
@@ -37,8 +38,20 @@
   font-weight: bold;
 }
 
-.movie-table {
-  .rating {
-    font-weight: bold;
-  }
+.movie-table-rank {
+  width: 40px;
+  text-align: center;
+}
+.movie-table-rating {
+  font-weight: bold;
+}
+
+.link-secondary {
+  color: $gray-light;
+  margin-left: $grid-gutter-width / 2;
+}
+
+.link-secondary:hover {
+  color: $gray;
+  text-decoration: none;
 }
