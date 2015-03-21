@@ -29,3 +29,10 @@
   Read more at<br>
   <%= link_to image_tag("imdb-logo.png"), "http://www.imdb.com/title/tt#{@movie.imdb_id}/", target: "_blank", class: "imdb-link" %>
 </p>
+
+<% if admin? %>
+<pre>
+  tmdb: <%= @movie.tmdb_id %>
+  rotten_id: <%= @movie.rotten_id %>
+</pre>
+<% end %>
