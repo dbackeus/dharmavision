@@ -80,7 +80,18 @@ class Movie
   end
 
   def tmdb_movie
-    @tmdb_movie ||= Tmdb::Find.imdb_id("tt#{imdb_id}").values.detect(&:any?).try(:first)
+    return @tmdb_movie if @tmdb_movie
+
+    response = Tmdb::Find.imdb_id("tt#{imdb_id}")
+
+    type, results = response.detect { |type, results| results.any? }
+
+    if type
+      tmdb_class = type == "movie_results" ? Tmdb::Movie : Tmdb::TV
+      params = { append_to_response: "alternative_titles" }
+
+      @tmdb_movie = tmdb_class.detail(results.first["id"], params)
+    end
   end
 
   def set_attributes_from_imdb
