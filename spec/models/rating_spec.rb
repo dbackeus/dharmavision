@@ -6,6 +6,24 @@ describe Rating do
   it { is_expected.to validate_inclusion_of(:rating).to_allow(1..10).on(:create) }
   it { is_expected.to validate_uniqueness_of(:movie_id).scoped_to(:user_id).on(:create) }
 
+  describe "counter caching" do
+    it "updates movie#counter_cache on creation and destruction" do
+      movie = create :movie
+
+      create :rating, movie: movie
+
+      movie.reload.ratings_count.should == 1
+
+      rating = create :rating, movie: movie
+
+      movie.reload.ratings_count.should == 2
+
+      rating.destroy
+
+      movie.reload.ratings_count.should == 1
+    end
+  end
+
   context "on being saved" do
     it "updates movies average rating" do
       user1 = create :user

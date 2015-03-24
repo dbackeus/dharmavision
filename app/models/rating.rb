@@ -5,7 +5,7 @@ class Rating
   field :rating, type: Integer
   field :review, type: String
 
-  belongs_to :movie, index: true
+  belongs_to :movie, index: true, counter_cache: :ratings_count
   belongs_to :user, index: true
 
   validates_presence_of :movie

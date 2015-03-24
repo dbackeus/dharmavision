@@ -15,6 +15,7 @@ class Movie
   field :year, type: Integer
   field :mpaa, type: String
   field :average_rating, type: Float, default: 0.0
+  field :ratings_count, type: Integer
 
   embeds_many :titles, class_name: "MovieTitle"
 

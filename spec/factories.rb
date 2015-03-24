@@ -12,4 +12,10 @@ FactoryGirl.define do
     imdb_id "0169102"
     association :creator, factory: :user
   end
+
+  factory :rating do
+    movie
+    user
+    rating 5
+  end
 end
