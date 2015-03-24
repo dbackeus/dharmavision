@@ -1,4 +1,4 @@
-<h1>Add Movie</h1>
+<h1>Suggest a Movie</h1>
 
 <div class="form-group has-feedback">
   <label class="control-label" for="imdb-title">Title</label>
@@ -16,5 +16,5 @@
 <%= simple_form_for @movie do |f| %>
   <%= f.input :imdb_id, as: :hidden %>
 
-  <%= f.button :submit, "Add Movie", id: "movie-submit", class: "btn-success", disabled: true %>
+  <%= f.button :submit, "Add Movie", id: "movie-submit", class: "btn-success", disabled: true, data: { "disable-with" => "Adding Movie..."} %>
 <% end %>
