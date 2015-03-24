@@ -30,6 +30,8 @@ RSpec.configure do |config|
     I18n.locale = :en
     Time.zone = "UTC"
 
+    WebMock.disable_net_connect!(allow_localhost: true)
+
     stub_request(:get, "http://akas.imdb.com/title/tt0169102/combined").
       to_return(body: webmock("lagaan.html"))
 
