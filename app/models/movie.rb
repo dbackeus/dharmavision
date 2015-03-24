@@ -4,10 +4,6 @@ class Movie
 
   field :title, type: String
   field :imdb_id, type: String
-  field :rotten_id, type: Integer
-  field :rotten_poster, type: String
-  field :omdb_poster, type: String
-  field :omdb_plot, type: String
   field :tmdb_id, type: Integer
   field :tmdb_poster_path, type: String
   field :tmdb_backdrop_path, type: String
@@ -24,8 +20,6 @@ class Movie
   has_many :ratings, dependent: :delete
 
   before_validation :set_attributes_from_imdb, on: :create, if: -> { found_on_imdb? }
-  before_validation :set_attributes_from_rotten_tomatoes, on: :create, if: -> { found_on_rotten_tomatoes? }
-  before_validation :set_attributes_from_omdb, on: :create, if: -> { found_on_omdb? }
   before_validation :set_attributes_from_tmdb, on: :create, if: -> { found_on_tmdb? }
 
   validates_presence_of :title
@@ -84,10 +78,6 @@ class Movie
     end
   end
 
-  def omdb_movie
-    @omdb_movie ||= Omdb::Api.new.find("tt#{imdb_id}", false, "full")[:movie]
-  end
-
   def tmdb_movie
     return @tmdb_movie if @tmdb_movie
 
@@ -113,20 +103,10 @@ class Movie
     end
   end
 
-  def set_attributes_from_omdb
-    self.omdb_plot = omdb_movie.plot
-    self.omdb_poster = omdb_movie.poster
-  end
-
   def set_attributes_from_tmdb
     self.tmdb_id = tmdb_movie["id"]
     self.tmdb_poster_path = tmdb_movie["poster_path"]
     self.tmdb_backdrop_path = tmdb_movie["backdrop_path"]
-  end
-
-  def set_attributes_from_rotten_tomatoes
-    self.rotten_id = rotten_movie.id
-    self.rotten_poster = rotten_movie.posters.detailed.gsub(/https?/, "https")
   end
 
   def set_accepted_status
@@ -146,14 +126,6 @@ class Movie
 
   def found_on_imdb?
     imdb_movie.title.present?
-  end
-
-  def found_on_rotten_tomatoes?
-    found_on_imdb? && rotten_movie.present?
-  end
-
-  def found_on_omdb?
-    found_on_imdb? && omdb_movie.present?
   end
 
   def found_on_tmdb?

@@ -80,31 +80,6 @@ describe Movie do
       ].to_json
     end
 
-    it "assigns metadata from rotten tomatoes" do
-      movie = create :movie, imdb_id: "0169102"
-
-      movie.rotten_id.should == 10306
-      movie.rotten_poster.should == "https://resizing.flixster.com/3Cm7uazgitpnDsbB9jAjwfddpeU=/54x78/dkpu1ddg7pbsk.cloudfront.net/movie/10/87/07/10870712_ori.jpg"
-    end
-
-    context "when movie doesn't exist on rotten tomatoes" do
-      it "doesn't set any metadata" do
-        stub_request(:get, "http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=rotten_tomatoes_api_key&id=0169102&type=imdb").
-          to_return(body: { "error" => "Could not find a movie with the specified id" }.to_json)
-
-        movie = create :movie, imdb_id: "0169102"
-
-        movie.rotten_id.should be_nil
-      end
-    end
-
-    it "assigns metadata from omdb" do
-      movie = create :movie, imdb_id: "0169102"
-
-      movie.omdb_poster.should == "http://ia.media-imdb.com/images/M/MV5BMTIwODMwMzA5Ml5BMl5BanBnXkFtZTcwMTQxNTEyMQ@@._V1_SX300.jpg"
-      movie.omdb_plot.should == "This is the story about the resilience shown by the Indians when they were under the British Rule. They are already taxed to the bone by the British and their cronies, but when Jack Russell announces that he will double the Lagaan (tax) from all villagers, they decide to oppose it. Leading the villagers is a handsome young man named Bhuvan, who challenges them to a game of cricket, a game that is to be played by veteran British cricket players, versus villagers, including Bhuvan himself, who have never played this game before, and do not even know a bat from a piece of wood. As the challenge is accepted, the interest grows and attracts Indians from all over the region, as well as the British from all over the country - as everyone gathers to see the 'fair play' that the British will display against their counter-parts, who are aided by none other than the sister, Elizabeth, of Captain Rusell."
-    end
-
     it "assigns metadata from tmdb" do
       movie = create :movie, imdb_id: "0169102"
 
