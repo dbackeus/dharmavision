@@ -31,8 +31,7 @@ class Movie
   index({imdb_id: 1}, unique: true)
   index({average_rating: 1})
 
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
+  searchkick word_start: %i[title]
 
   def self.suggested
     where(:ratings_count.lt => 5)
@@ -42,8 +41,8 @@ class Movie
     where(:ratings_count.gt => 4)
   end
 
-  def as_indexed_json(options = {})
-    as_json(only: :title, include: [:titles])
+  def search_data
+    as_json(only: :title).merge("titles" => titles.map(&:title))
   end
 
   def poster_url(size = "w500")
