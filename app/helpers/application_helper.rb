@@ -24,4 +24,10 @@ module ApplicationHelper
 
     @page_title || "Dharmavision"
   end
+
+  def link_back_or(title, default_path, options = {})
+    url = request.referer.to_s.include?(ENV.fetch("HOST")) ? url_for(:back) : default_path
+
+    link_to title, url, options
+  end
 end
