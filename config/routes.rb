@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :movies, except: %i[edit update] do
     collection do
       get :suggested
+      get :search
     end
   end
   resources :ratings, only: %i[create]

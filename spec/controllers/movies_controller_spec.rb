@@ -35,6 +35,21 @@ describe MoviesController do
     end
   end
 
+  describe "GET search" do
+    it "returns elastic search results" do
+      Movie.reindex
+
+      movie = create :movie
+      Movie.searchkick_index.refresh
+
+      get :search, query: "lagaan"
+
+      json = JSON.parse(response.body)
+
+      json.first["id"].should == movie.id.to_s
+    end
+  end
+
   describe "POST create" do
     before { sign_in user }
 

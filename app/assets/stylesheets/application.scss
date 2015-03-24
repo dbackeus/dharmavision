@@ -117,3 +117,16 @@ $thumb-width: $thumb-height * 0.66;
 .container-no-padding {
   padding: 0;
 }
+
+.search-result {
+  img {
+    height: 40px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin-right: 15px;
+  }
+}
+
+.form-control-feedback-dim {
+  color: $gray-light;
+}
