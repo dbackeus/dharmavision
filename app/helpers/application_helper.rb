@@ -18,4 +18,10 @@ module ApplicationHelper
   def admin?
     user_signed_in? && current_user.admin?
   end
+
+  def page_title(page_title = nil)
+    @page_title = page_title if page_title
+
+    @page_title || "Dharmavision"
+  end
 end
