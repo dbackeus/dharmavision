@@ -88,6 +88,19 @@ GEM
     dotenv (2.0.0)
     dotenv-rails (2.0.0)
       dotenv (= 2.0.0)
+    elasticsearch (1.0.8)
+      elasticsearch-api (= 1.0.7)
+      elasticsearch-transport (= 1.0.7)
+    elasticsearch-api (1.0.7)
+      multi_json
+    elasticsearch-model (0.1.6)
+      activesupport (> 3)
+      elasticsearch (> 0.4)
+      hashie
+    elasticsearch-rails (0.1.6)
+    elasticsearch-transport (1.0.7)
+      faraday
+      multi_json
     erubis (2.7.0)
     execjs (2.4.0)
     factory_girl (4.5.0)
@@ -95,6 +108,8 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    faraday (0.9.1)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.8)
     formatador (0.2.5)
     globalid (0.3.3)
@@ -115,6 +130,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    hashie (3.4.0)
     heroku-deflater (0.5.3)
       rack (>= 1.4.5)
     hike (1.2.3)
@@ -163,6 +179,7 @@ GEM
       optionable (~> 0.2.0)
     multi_json (1.11.0)
     multi_xml (0.5.5)
+    multipart-post (2.0.0)
     nenv (0.2.0)
     netrc (0.10.3)
     newrelic_moped (0.0.13)
@@ -312,6 +329,8 @@ DEPENDENCIES
   database_cleaner
   devise
   dotenv-rails
+  elasticsearch-model
+  elasticsearch-rails
   factory_girl_rails
   guard
   guard-pow

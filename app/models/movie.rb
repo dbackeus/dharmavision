@@ -31,12 +31,19 @@ class Movie
   index({imdb_id: 1}, unique: true)
   index({average_rating: 1})
 
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   def self.suggested
     where(:ratings_count.lt => 5)
   end
 
   def self.listed
     where(:ratings_count.gt => 4)
+  end
+
+  def as_indexed_json(options = {})
+    as_json(only: :title, include: [:titles])
   end
 
   def poster_url(size = "w500")
