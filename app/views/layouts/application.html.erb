@@ -16,13 +16,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/"><%= image_tag "navbar-brand-logo.png", class: "navbar-brand-logo" %></a>
+          <%= link_to image_tag("navbar-brand-logo.png", class: "navbar-brand-logo"), movies_path, class: "navbar-brand" %>
         </div>
 
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="<%= 'active' if current_page?(movies_path) %>">
-              <%= link_to "Top 108", movies_path %>
+              <%= link_to "Toplist", movies_path %>
             </li>
             <li class="<%= 'active' if current_page?(suggested_movies_path) %>">
               <%= link_to "Suggested Movies", suggested_movies_path %>
