@@ -19,6 +19,17 @@
           <a class="navbar-brand" href="/"><%= image_tag "navbar-brand-logo.png", class: "navbar-brand-logo" %></a>
         </div>
 
+        <div class="collapse navbar-collapse navbar-left">
+          <ul class="nav navbar-nav">
+            <li class="<%= 'active' if current_page?(movies_path) %>">
+              <%= link_to "Top 108", movies_path %>
+            </li>
+            <li class="<%= 'active' if current_page?(suggested_movies_path) %>">
+              <%= link_to "Suggested Movies", suggested_movies_path %>
+            </li>
+          </ul>
+        </div>
+
         <div class="collapse navbar-collapse navbar-right">
           <ul class="nav navbar-nav navbar-no-padding">
             <% if user_signed_in? %>

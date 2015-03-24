@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :movies, except: %i[edit update]
+  resources :movies, except: %i[edit update] do
+    collection do
+      get :suggested
+    end
+  end
   resources :ratings, only: %i[create]
 
   get "imdb/search"

@@ -37,6 +37,14 @@ class Movie
   index({imdb_id: 1}, unique: true)
   index({average_rating: 1})
 
+  def self.suggested
+    where(:ratings_count.lt => 5)
+  end
+
+  def self.listed
+    where(:ratings_count.gt => 4)
+  end
+
   def poster_url(size = "w500")
     return nil unless tmdb_poster_path.present?
 

@@ -1,15 +1,11 @@
-<% page_title "Top 108" %>
+<% page_title "Suggested movies" %>
 
-<%= link_to "New Movie", new_movie_path, class: "btn btn-primary pull-right" if user_signed_in? %>
-
-<h1>Top 108</h1>
+<h1>Suggested movies</h1>
 
 <p>
-  The top 108 movies as voted by the Dharmavision members.
-  Only movies with at least 5 ratings are allowed in the top 108.
-  To see which movies are suggested but would need more ratings
-  to make it into the list please refer to the
-  <%= link_to "suggested movies", suggested_movies_path %> page.
+  Here are the movies that have been suggested but have not yet received the 5 ratings
+  required to make it into the top 108. Please consider rating some of them to get
+  more movies into the list!
 </p>
 
 <table class="table movie-table table-striped">
@@ -19,14 +15,12 @@
         <td class="movie-table-poster">
           <%= link_to image_tag(movie.poster_url("w92")), movie if movie.poster_url.present? %>
         </td>
-        <td class="movie-table-rank">
-          <%= index + 1 %>
-        </td>
         <td class="movie-table-title">
           <%= link_to movie.title, movie %> (<%= movie.year %>)
         </td>
         <td class="movie-table-ranking">
           <%= image_tag "raty/lib/images/star-on.png" %> <%= movie.average_rating %>
+          (<%= movie.ratings_count %> / 5 ratings)
         </td>
         <% if admin? %>
           <td>
