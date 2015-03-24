@@ -54,10 +54,10 @@
   font-weight: bold;
 }
 
-$thumb-height: 50px;
-$thumb-width: $thumb-height * 0.66;
-
 .movie-table-poster {
+  $thumb-height: 50px;
+  $thumb-width: $thumb-height * 0.66;
+
   height: $thumb-height + 18px;
   width: $thumb-width + 9px;
 
