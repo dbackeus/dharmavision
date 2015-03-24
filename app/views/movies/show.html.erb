@@ -1,6 +1,7 @@
 <% page_title @movie.title %>
 
 <div class="container-fluid">
+<div class="container-fluid container-no-padding">
   <div class="row">
     <div class="col-sm-4">
       <%= image_tag @movie.poster_url, class: "movie-poster" if @movie.poster_url %>
