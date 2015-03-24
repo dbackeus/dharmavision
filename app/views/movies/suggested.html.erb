@@ -7,7 +7,7 @@
 <p>
   Here are the movies that have been suggested but have not yet received the 5 ratings
   required to make it into the top 108. Please consider rating some of them to get
-  more movies into the list!
+  them into the list!
 </p>
 
 <table class="table movie-table table-striped">
@@ -21,8 +21,10 @@
           <%= link_to movie.title, movie %> (<%= movie.year %>)
         </td>
         <td class="movie-table-ranking">
-          <%= image_tag "raty/lib/images/star-on.png" %> <%= movie.average_rating %>
-          (<%= movie.ratings_count %> / 5 ratings)
+          <span class="deemphasize">
+            <%= image_tag "raty/lib/images/star-on.png" %>
+          </span>
+          <%= movie.ratings_count %><span class="deemphasize">/5 ratings</span>
         </td>
         <% if admin? %>
           <td>
