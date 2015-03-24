@@ -1,5 +1,5 @@
 <p>
-  <%= link_back_or("Back to list", movies_path) %>
+  <%= link_back("Back to list", if: request.referer[suggested_movies_path], else: movies_path) %>
 </p>
 
 <h1>Suggest a Movie</h1>
