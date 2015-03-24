@@ -23,7 +23,6 @@ gem "searchkick"
 gem "simple_form"
 gem "themoviedb"
 gem "turbolinks"
-gem "typhoeus"
 gem "uglifier"
 
 source "https://rails-assets.org" do
