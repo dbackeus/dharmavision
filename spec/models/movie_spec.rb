@@ -7,6 +7,7 @@ describe Movie do
   it { is_expected.to validate_uniqueness_of :imdb_id }
 
   specify { Movie.new.average_rating.should == 0.0 }
+  specify { Movie.new.ratings_count.should == 0 }
 
   describe "#imdb_id=" do
     it "parses the imdb id from imdb urls if given a url" do
