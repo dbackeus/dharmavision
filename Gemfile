@@ -19,7 +19,6 @@ gem "newrelic_moped"
 gem "omdb", github: "jvanbaarsen/omdb" # for imdb find method
 gem "recursive-open-struct"
 gem "rest-client"
-gem "rottentomatoes"
 gem "sass-rails"
 gem "searchkick"
 gem "simple_form"

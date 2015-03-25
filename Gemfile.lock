@@ -76,7 +76,6 @@ GEM
       safe_yaml (~> 1.0.0)
     database_cleaner (1.4.1)
     debug_inspector (0.0.2)
-    deepopenstruct (0.1.2)
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -246,9 +245,6 @@ GEM
     rest-client (1.7.3)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
-    rottentomatoes (1.1.2)
-      deepopenstruct (>= 0.1.2)
-      json
     rspec (3.2.0)
       rspec-core (~> 3.2.0)
       rspec-expectations (~> 3.2.0)
@@ -356,7 +352,6 @@ DEPENDENCIES
   rb-fsevent
   recursive-open-struct
   rest-client
-  rottentomatoes
   rspec-rails
   sass-rails
   searchkick
