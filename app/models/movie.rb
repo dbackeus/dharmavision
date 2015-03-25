@@ -45,6 +45,12 @@ class Movie
     as_json(only: :title).merge("titles" => titles.map(&:title))
   end
 
+  def mpaa_rating
+    if mpaa.present?
+      mpaa.split.second
+    end
+  end
+
   def poster_url(size = "w500")
     return nil unless tmdb_poster_path.present?
 

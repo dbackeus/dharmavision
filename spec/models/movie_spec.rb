@@ -9,6 +9,24 @@ describe Movie do
   specify { Movie.new.average_rating.should == 0.0 }
   specify { Movie.new.ratings_count.should == 0 }
 
+  describe "#mpaa_rating" do
+    it "gets the rating without explanation" do
+      {
+        "G" => "Rated G bla bla",
+        "PG" => "Rated PG for sci-fi violence and brief mild language",
+        "PG-13" => "Rated PG-13 for sci-fi action violence",
+        "R" => "Rated R for language and prison violence (certificate 33087)",
+        "NC-17" => "Rated NC-17 for explicit sexual content and graphic nudity throughout",
+      }.each do |actual, description|
+        Movie.new(mpaa: description).mpaa_rating.should == actual
+      end
+    end
+
+    it "returns nil unless rating is available" do
+      Movie.new.mpaa_rating.should be_nil
+    end
+  end
+
   describe "#imdb_id=" do
     it "parses the imdb id from imdb urls if given a url" do
       Movie.new(imdb_id: "0169102").imdb_id.should == "0169102"
