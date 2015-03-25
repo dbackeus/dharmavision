@@ -56,7 +56,7 @@ class MoviesController < ApplicationController
 
     @movie.destroy
 
-    redirect_to movies_url, notice: "Movie was successfully destroyed."
+    redirect_to :back, notice: "Movie was successfully destroyed."
   end
 
   private
