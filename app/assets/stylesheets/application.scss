@@ -134,3 +134,9 @@
 .deemphasize {
   color: $gray;
 }
+
+@media screen and (min-width: $screen-sm-min) {
+  #movie-search {
+    width: 350px;
+  }
+}
