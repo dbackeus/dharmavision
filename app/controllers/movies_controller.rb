@@ -10,17 +10,7 @@ class MoviesController < ApplicationController
   end
 
   def search
-    results = Movie.search(params[:query], fields: [{"title^100" => :word_start}, :titles], limit: 10)
-
-    response = results.map do |movie|
-      {
-        id: movie.id.to_s,
-        title: movie.title,
-        thumbnail: movie.poster_url("w92"),
-      }
-    end
-
-    render json: response.as_json
+    @results = Movie.search(params[:query], fields: [{"title^100" => :word_start}, :titles], limit: 10)
   end
 
   def show

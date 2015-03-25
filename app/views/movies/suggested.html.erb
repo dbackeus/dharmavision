@@ -27,7 +27,7 @@
           <%= movie.ratings_count %><span class="deemphasize">/5 ratings</span>
         </td>
         <% if admin? %>
-          <td>
+          <td class="hidden-xs">
               <%= link_to "Destroy", movie, method: :delete, data: { confirm: "Delete #{movie.title}?" } %>
           </td>
         <% end %>

@@ -1,0 +1,25 @@
+<h1>Search results</h1>
+
+<% if @results.any? %>
+  <table class="table">
+    <tbody>
+      <% @results.each do |movie| %>
+        <tr>
+          <td>
+            <%= link_to image_tag(movie.poster_url("w92")), movie %>
+          </td>
+          <td>
+            <%= link_to movie.title, movie %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>
+    No movies found searching for '<em><%= params[:query] %></em>'.
+  </p>
+  <p>
+    Maybe you'd like to add it by <%= link_to "suggesting a new movie", new_movie_path %>?
+  </p>
+<% end %>

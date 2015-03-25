@@ -8,7 +8,9 @@ $ ->
     matcher: (movie) ->
       true
     source: (query, process) ->
-      $.get("/movies/search.json?query=#{query}", process)
+      $.get "/movies/search.json?query=#{query}", (data) =>
+        process(data)
+        @$menu.addClass("hidden-xs")
     updater: (movie) ->
       window.location = "/movies/#{movie.id}"
       null
