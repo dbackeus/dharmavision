@@ -30,4 +30,8 @@ module ApplicationHelper
 
     link_to title, url, options
   end
+
+  def active_on(path)
+    'active' if current_page?(path)
+  end
 end
