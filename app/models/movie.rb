@@ -7,6 +7,7 @@ class Movie
   field :tmdb_id, type: Integer
   field :tmdb_poster_path, type: String
   field :tmdb_backdrop_path, type: String
+  field :tmdb_mpaa, type: String
   field :plot, type: String
   field :year, type: Integer
   field :mpaa, type: String
@@ -99,9 +100,9 @@ class Movie
 
     if type
       tmdb_class = type == "movie_results" ? Tmdb::Movie : Tmdb::TV
-      params = { append_to_response: "alternative_titles" }
+      params = { append_to_response: "alternative_titles,releases" }
 
-      @tmdb_movie = tmdb_class.detail(results.first["id"], params)
+      @tmdb_movie = TmdbMovie.new tmdb_class.detail(results.first["id"], params)
     end
   end
 
@@ -120,6 +121,7 @@ class Movie
     self.plot = self.plot.presence || tmdb_movie["overview"]
     self.tmdb_poster_path = tmdb_movie["poster_path"]
     self.tmdb_backdrop_path = tmdb_movie["backdrop_path"]
+    self.tmdb_mpaa = tmdb_movie.mpaa
   end
 
   def set_accepted_status

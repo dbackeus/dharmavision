@@ -1,0 +1,184 @@
+{
+   "overview" : "The Jungle Book follows the ups and downs of the man-cub Mowgli as he makes his way back to the human village with wise panther Bagheera to escape ruthless tiger Shere Khan. Along the way, he meets unforgettable friends and foes including mad King Louie of the Apes, the hypnotic snake Kaa and the loveable, happy-go-lucky bear Baloo, who teaches Mowgli about true friendship.",
+   "imdb_id" : "tt0061852",
+   "production_companies" : [
+      {
+         "id" : 2,
+         "name" : "Walt Disney Pictures"
+      }
+   ],
+   "id" : 9325,
+   "original_title" : "The Jungle Book",
+   "spoken_languages" : [
+      {
+         "iso_639_1" : "en",
+         "name" : "English"
+      }
+   ],
+   "vote_count" : 397,
+   "alternative_titles" : {
+      "titles" : [
+         {
+            "title" : "A dzsungel könyve",
+            "iso_3166_1" : "HU"
+         },
+         {
+            "title" : "Djungelboken",
+            "iso_3166_1" : "SE"
+         },
+         {
+            "iso_3166_1" : "FR",
+            "title" : "Le livre de la jungle"
+         },
+         {
+            "title" : "Jungelboken",
+            "iso_3166_1" : "NO"
+         },
+         {
+            "title" : "Junglebogen",
+            "iso_3166_1" : "DK"
+         },
+         {
+            "title" : "Jungelbogen",
+            "iso_3166_1" : "DK"
+         },
+         {
+            "title" : "Mogli - O Menino Lobo",
+            "iso_3166_1" : "BR"
+         },
+         {
+            "iso_3166_1" : "NL",
+            "title" : "Jungle Boek"
+         },
+         {
+            "iso_3166_1" : "ES",
+            "title" : "El libro de la selva"
+         },
+         {
+            "iso_3166_1" : "FR",
+            "title" : "Le Livre de la Jungle - Disney"
+         },
+         {
+            "iso_3166_1" : "PL",
+            "title" : "Księga Dżungli"
+         },
+         {
+            "iso_3166_1" : "CA",
+            "title" : "The Jungle Book 1"
+         },
+         {
+            "title" : "Jungle Book",
+            "iso_3166_1" : "US"
+         },
+         {
+            "iso_3166_1" : "AU",
+            "title" : "The Jungle Book"
+         },
+         {
+            "title" : "O Livro da Selva",
+            "iso_3166_1" : "PT"
+         },
+         {
+            "title" : "Das Dschungelbuch",
+            "iso_3166_1" : "DE"
+         },
+         {
+            "iso_3166_1" : "JP",
+            "title" : "ジャングル・ブック"
+         }
+      ]
+   },
+   "adult" : false,
+   "budget" : 4000000,
+   "genres" : [
+      {
+         "id" : 12,
+         "name" : "Adventure"
+      },
+      {
+         "id" : 16,
+         "name" : "Animation"
+      },
+      {
+         "id" : 10751,
+         "name" : "Family"
+      }
+   ],
+   "releases" : {
+      "countries" : [
+         {
+            "certification" : "G",
+            "iso_3166_1" : "US",
+            "release_date" : "1967-10-18",
+            "primary" : true
+         },
+         {
+            "release_date" : "1968-12-13",
+            "iso_3166_1" : "DE",
+            "certification" : "0",
+            "primary" : false
+         },
+         {
+            "certification" : "",
+            "iso_3166_1" : "NL",
+            "release_date" : "1967-12-03",
+            "primary" : false
+         },
+         {
+            "primary" : false,
+            "certification" : "A",
+            "iso_3166_1" : "DK",
+            "release_date" : "1968-12-27"
+         },
+         {
+            "release_date" : "1968-12-09",
+            "certification" : "Barntillåten",
+            "iso_3166_1" : "SE",
+            "primary" : false
+         },
+         {
+            "primary" : false,
+            "iso_3166_1" : "GB",
+            "certification" : "U",
+            "release_date" : "1968-11-18"
+         },
+         {
+            "primary" : false,
+            "iso_3166_1" : "FR",
+            "certification" : "U",
+            "release_date" : "1968-12-11"
+         },
+         {
+            "certification" : "",
+            "iso_3166_1" : "IT",
+            "release_date" : "1968-12-06",
+            "primary" : false
+         }
+      ]
+   },
+   "runtime" : 78,
+   "backdrop_path" : "/c2rWPWDJU6tIEHB9mA0BEmXDkAS.jpg",
+   "production_countries" : [
+      {
+         "name" : "United States of America",
+         "iso_3166_1" : "US"
+      }
+   ],
+   "video" : false,
+   "belongs_to_collection" : {
+      "backdrop_path" : "/7F5dqdq8GXhqDpLNX43pODtaevW.jpg",
+      "id" : 97459,
+      "poster_path" : "/3Z4vzPkmnyrLnfFyr5cEHUUT1HN.jpg",
+      "name" : "The Jungle Book Collection"
+   },
+   "vote_average" : 6.6,
+   "popularity" : 1.68207455030966,
+   "homepage" : "",
+   "release_date" : "1967-10-18",
+   "status" : "Released",
+   "title" : "The Jungle Book",
+   "poster_path" : "/1AreNcL9s24Qfghbzomy0IlzCFk.jpg",
+   "tagline" : "The Jungle is JUMPIN'!",
+   "revenue" : 205843612,
+   "original_language" : "en"
+}

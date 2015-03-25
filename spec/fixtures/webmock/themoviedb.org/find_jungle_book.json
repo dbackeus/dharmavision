@@ -1,0 +1,21 @@
+{
+   "tv_season_results" : [],
+   "tv_episode_results" : [],
+   "movie_results" : [
+      {
+         "vote_count" : 397,
+         "adult" : false,
+         "title" : "The Jungle Book",
+         "release_date" : "1967-10-18",
+         "original_title" : "The Jungle Book",
+         "poster_path" : "/1AreNcL9s24Qfghbzomy0IlzCFk.jpg",
+         "popularity" : 1.68207455030966,
+         "backdrop_path" : "/c2rWPWDJU6tIEHB9mA0BEmXDkAS.jpg",
+         "vote_average" : 6.6,
+         "id" : 9325,
+         "video" : false
+      }
+   ],
+   "tv_results" : [],
+   "person_results" : []
+}

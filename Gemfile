@@ -17,6 +17,7 @@ gem "mongoid"
 gem "newrelic_rpm"
 gem "newrelic_moped"
 gem "omdb", github: "jvanbaarsen/omdb" # for imdb find method
+gem "recursive-open-struct"
 gem "rest-client"
 gem "rottentomatoes"
 gem "sass-rails"

@@ -117,12 +117,32 @@ describe Movie do
         stub_request(:get, "http://api.themoviedb.org/3/find/tt0158914?api_key=themoviedb_api_key&external_source=imdb_id").
           to_return(body: webmock("themoviedb.org/find_dyaneshwar.json"))
 
-        stub_request(:get, "http://api.themoviedb.org/3/movie/257396?api_key=themoviedb_api_key&append_to_response=alternative_titles").
+        stub_request(:get, "http://api.themoviedb.org/3/movie/257396?api_key=themoviedb_api_key&append_to_response=alternative_titles,releases").
           to_return(body: webmock("themoviedb.org/dyaneshwar.json"))
 
         movie = create :movie, imdb_id: "0158914"
 
         movie.plot.should == "It's the story of a boy who finds enlightenment by experiencing religious hipocrisy and dogmatism. Dnyaneshwar liberated the \"divine knowledge\" locked in the Sanskrit language to bring that knowledge into Prakrit (Marathi) and made it available to the common man."
+      end
+    end
+
+    context "with an imdb without mpaa info" do
+      it "sets mpaa from tmdb" do
+        stub_request(:get, "http://akas.imdb.com/title/tt0061852/combined").
+          to_return(body: webmock("imdb.com/jungle_book.html"))
+
+        stub_request(:get, "http://akas.imdb.com/title/tt0061852/releaseinfo").
+          to_return(body: webmock("imdb.com/jungle_book_releaseinfo.html"))
+
+        stub_request(:get, "http://api.themoviedb.org/3/find/tt0061852?api_key=themoviedb_api_key&external_source=imdb_id").
+          to_return(body: webmock("themoviedb.org/find_jungle_book.json"))
+
+        stub_request(:get, "http://api.themoviedb.org/3/movie/9325?api_key=themoviedb_api_key&append_to_response=alternative_titles,releases").
+          to_return(body: webmock("themoviedb.org/jungle_book.json"))
+
+        movie = create :movie, imdb_id: "0061852"
+
+        movie.tmdb_mpaa.should == "G"
       end
     end
   end

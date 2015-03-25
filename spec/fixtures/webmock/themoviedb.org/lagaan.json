@@ -1,53 +1,16 @@
 {
-   "release_date" : "2001-06-15",
-   "title" : "Lagaan: Once Upon a Time in India",
-   "adult" : false,
-   "imdb_id" : "tt0169102",
-   "original_language" : "hi",
-   "backdrop_path" : "/x0si3I9JKup9t6l88MF6S3lZ3Cd.jpg",
-   "popularity" : 0.0381422455189736,
-   "tagline" : "",
+   "status" : "Released",
    "alternative_titles" : {
       "titles" : []
    },
-   "production_companies" : [
-      {
-         "id" : 2140,
-         "name" : "Aamir Khan Productions"
-      }
-   ],
-   "original_title" : "Lagaan: Once Upon a Time in India",
-   "overview" : "Lagaan tells the tale of the Indian village Champaner, beset by drought and British colonialism in the year 1893. Without a drop of rain in months, the worried villagers of Champaner decide to ask the local authorities for a temporary repeal of their taxes -- the hated lagaan. Led by the heroic Bhuvan (Indian superstar Aamir Khan) they bring their plight to the military governor, Captain Russell (Paul Blackthorne). But the sadistic Russell threatens to raise the lagaan threefold, unless the villagers can beat his men at a game of cricket, in which case he'll lift taxes on the entire province for a period of three years. Bhuvan accepts the challenge, but there's a problem -- no one in Champaner knows how to play cricket. A band of misfits come to the rescue, coached by Russell's soft-hearted sister Elizabeth (Rachel Shelley), and the race is on to be ready in three months' time. An epic reworking of Victory with eye-popping song-and-dance routines.",
-   "homepage" : "http://www.lagaan.com",
-   "genres" : [
-      {
-         "name" : "Drama",
-         "id" : 18
-      },
-      {
-         "name" : "Romance",
-         "id" : 10749
-      },
-      {
-         "id" : 10769,
-         "name" : "Foreign"
-      }
-   ],
-   "runtime" : 224,
-   "video" : false,
-   "vote_average" : 7.6,
-   "revenue" : 8100000,
-   "belongs_to_collection" : null,
-   "poster_path" : "/iXpV2SCApjhLDvn9Usmk4hiQe4J.jpg",
-   "vote_count" : 28,
    "spoken_languages" : [
       {
-         "name" : "Italiano",
-         "iso_639_1" : "it"
+         "iso_639_1" : "it",
+         "name" : "Italiano"
       },
       {
-         "iso_639_1" : "ur",
-         "name" : "اردو"
+         "name" : "اردو",
+         "iso_639_1" : "ur"
       },
       {
          "name" : "हिन्दी",
@@ -58,13 +21,66 @@
          "name" : "English"
       }
    ],
-   "id" : 19666,
-   "status" : "Released",
    "budget" : 5200000,
+   "genres" : [
+      {
+         "name" : "Drama",
+         "id" : 18
+      },
+      {
+         "id" : 10749,
+         "name" : "Romance"
+      },
+      {
+         "name" : "Foreign",
+         "id" : 10769
+      }
+   ],
+   "belongs_to_collection" : null,
+   "popularity" : 0.188819023587961,
+   "tagline" : "",
+   "title" : "Lagaan: Once Upon a Time in India",
+   "releases" : {
+      "countries" : [
+         {
+            "release_date" : "2001-06-15",
+            "certification" : "UA",
+            "primary" : true,
+            "iso_3166_1" : "IN"
+         },
+         {
+            "release_date" : "2001-06-15",
+            "primary" : false,
+            "certification" : "",
+            "iso_3166_1" : "IT"
+         }
+      ]
+   },
+   "poster_path" : "/iXpV2SCApjhLDvn9Usmk4hiQe4J.jpg",
+   "imdb_id" : "tt0169102",
+   "vote_average" : 7.6,
+   "revenue" : 8100000,
+   "vote_count" : 28,
+   "homepage" : "http://www.lagaan.com",
+   "original_language" : "hi",
+   "id" : 19666,
+   "adult" : false,
+   "video" : false,
+   "runtime" : 224,
+   "release_date" : "2001-06-15",
+   "production_companies" : [
+      {
+         "name" : "Aamir Khan Productions",
+         "id" : 2140
+      }
+   ],
+   "overview" : "Lagaan tells the tale of the Indian village Champaner, beset by drought and British colonialism in the year 1893. Without a drop of rain in months, the worried villagers of Champaner decide to ask the local authorities for a temporary repeal of their taxes -- the hated lagaan. Led by the heroic Bhuvan (Indian superstar Aamir Khan) they bring their plight to the military governor, Captain Russell (Paul Blackthorne). But the sadistic Russell threatens to raise the lagaan threefold, unless the villagers can beat his men at a game of cricket, in which case he'll lift taxes on the entire province for a period of three years. Bhuvan accepts the challenge, but there's a problem -- no one in Champaner knows how to play cricket. A band of misfits come to the rescue, coached by Russell's soft-hearted sister Elizabeth (Rachel Shelley), and the race is on to be ready in three months' time. An epic reworking of Victory with eye-popping song-and-dance routines.",
+   "backdrop_path" : "/x0si3I9JKup9t6l88MF6S3lZ3Cd.jpg",
    "production_countries" : [
       {
          "name" : "India",
          "iso_3166_1" : "IN"
       }
-   ]
+   ],
+   "original_title" : "Lagaan: Once Upon a Time in India"
 }
