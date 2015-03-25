@@ -111,6 +111,7 @@ class Movie
 
   def set_attributes_from_tmdb
     self.tmdb_id = tmdb_movie["id"]
+    self.plot = self.plot.presence || tmdb_movie["overview"]
     self.tmdb_poster_path = tmdb_movie["poster_path"]
     self.tmdb_backdrop_path = tmdb_movie["backdrop_path"]
   end

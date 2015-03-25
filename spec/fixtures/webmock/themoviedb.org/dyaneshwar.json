@@ -1,0 +1,50 @@
+{
+   "vote_count" : 0,
+   "homepage" : "",
+   "overview" : "It's the story of a boy who finds enlightenment by experiencing religious hipocrisy and dogmatism. Dnyaneshwar liberated the \"divine knowledge\" locked in the Sanskrit language to bring that knowledge into Prakrit (Marathi) and made it available to the common man.",
+   "production_countries" : [
+      {
+         "name" : "India",
+         "iso_3166_1" : "IN"
+      }
+   ],
+   "popularity" : 0.000214558039535644,
+   "production_companies" : [],
+   "backdrop_path" : null,
+   "adult" : false,
+   "genres" : [
+      {
+         "name" : "Drama",
+         "id" : 18
+      }
+   ],
+   "belongs_to_collection" : null,
+   "runtime" : 139,
+   "status" : "Released",
+   "original_language" : "mr",
+   "id" : 257396,
+   "title" : "Saint Dyaneshwar",
+   "imdb_id" : "tt0158914",
+   "budget" : 0,
+   "alternative_titles" : {
+      "titles" : [
+         {
+            "title" : "संत ज्ञानेश्वर",
+            "iso_3166_1" : "IN"
+         }
+      ]
+   },
+   "spoken_languages" : [
+      {
+         "iso_639_1" : "mr",
+         "name" : ""
+      }
+   ],
+   "release_date" : "1940-01-01",
+   "poster_path" : "/fvIvzntdqgjNse2b7F6ocSmvB60.jpg",
+   "revenue" : 0,
+   "vote_average" : 0,
+   "tagline" : "",
+   "video" : false,
+   "original_title" : "Sant Dyaneshwar"
+}
