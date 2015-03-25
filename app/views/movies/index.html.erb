@@ -28,6 +28,9 @@
         <td class="movie-table-ranking">
           <%= image_tag "raty/lib/images/star-on.png" %> <%= movie.average_rating %>
         </td>
+        <td class="movie-table-mpaa">
+          <%= image_tag "ratings/#{movie.mpaa_rating}.png" if movie.mpaa_rating %>
+        </td>
         <% if admin? %>
           <td class="hidden-sm">
               <%= link_to "Destroy", movie, method: :delete, data: { confirm: "Delete #{movie.title}?" } %>

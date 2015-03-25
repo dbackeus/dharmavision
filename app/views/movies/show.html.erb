@@ -12,6 +12,10 @@
     <div class="col-sm-8">
       <h1><%= @movie.title %></h1>
       <p class="lead"><%= @movie.plot %></p>
+      <p>
+        <strong><small>MPAA Rating</small></strong><br>
+        <%= @movie.mpaa || @movie.tmdb_mpaa ? "Rated #{@movie.tmdb_mpaa}" : "Not available" %>.
+      </p>
     </div>
   </div>
 </div>

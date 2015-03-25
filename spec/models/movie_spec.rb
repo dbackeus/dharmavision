@@ -10,7 +10,7 @@ describe Movie do
   specify { Movie.new.ratings_count.should == 0 }
 
   describe "#mpaa_rating" do
-    it "gets the rating without explanation" do
+    it "gets the imdb rating without explanation" do
       {
         "G" => "Rated G bla bla",
         "PG" => "Rated PG for sci-fi violence and brief mild language",
@@ -20,6 +20,11 @@ describe Movie do
       }.each do |actual, description|
         Movie.new(mpaa: description).mpaa_rating.should == actual
       end
+    end
+
+    it "uses tmdb_mpaa if available" do
+      Movie.new(mpaa: "Rated G bla bla", tmdb_mpaa: "G").mpaa_rating.should == "G"
+      Movie.new(mpaa: nil, tmdb_mpaa: "G").mpaa_rating.should == "G"
     end
 
     it "returns nil unless rating is available" do

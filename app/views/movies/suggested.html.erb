@@ -26,6 +26,9 @@
           </span>
           <%= movie.ratings_count %><span class="deemphasize">/5 ratings</span>
         </td>
+        <td class="movie-table-mpaa">
+          <%= image_tag "ratings/#{movie.mpaa_rating}.png" if movie.mpaa_rating %>
+        </td>
         <% if admin? %>
           <td class="hidden-xs">
               <%= link_to "Destroy", movie, method: :delete, data: { confirm: "Delete #{movie.title}?" } %>

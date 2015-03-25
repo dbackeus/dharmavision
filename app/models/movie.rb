@@ -47,9 +47,7 @@ class Movie
   end
 
   def mpaa_rating
-    if mpaa.present?
-      mpaa.split.second
-    end
+    tmdb_mpaa.presence || mpaa.to_s.split.second
   end
 
   def poster_url(size = "w500")
