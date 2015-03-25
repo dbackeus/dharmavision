@@ -25,5 +25,15 @@ describe TmdbMovie do
         movie.mpaa.should be_nil
       end
     end
+
+    context "given a tv series" do
+      it "is nil" do
+        attributes = JSON.parse webmock("themoviedb.org/mahabharat.json")
+
+        movie = TmdbMovie.new(attributes)
+
+        movie.mpaa.should be_nil
+      end
+    end
   end
 end
