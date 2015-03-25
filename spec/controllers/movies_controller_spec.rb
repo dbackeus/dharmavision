@@ -35,14 +35,14 @@ describe MoviesController do
     end
   end
 
-  describe "GET search" do
+  describe "GET search.json" do
     it "returns elastic search results" do
       Movie.reindex
 
       movie = create :movie
       Movie.searchkick_index.refresh
 
-      get :search, query: "lagaan"
+      get :search, format: :json, query: "lagaan"
 
       json = JSON.parse(response.body)
 

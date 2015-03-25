@@ -138,6 +138,9 @@ GEM
       nokogiri (= 1.6.2.1)
     intercom-rails (0.2.27)
       activesupport (> 3.0)
+    jbuilder (2.2.11)
+      activesupport (>= 3.0.0, < 5)
+      multi_json (~> 1.2)
     jquery-rails (4.0.3)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -335,6 +338,7 @@ DEPENDENCIES
   heroku-deflater
   imdb
   intercom-rails
+  jbuilder
   jquery-rails
   jquery-turbolinks
   mongoid
