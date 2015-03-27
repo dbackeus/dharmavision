@@ -27,7 +27,7 @@
           <%= movie.ratings_count %><span class="deemphasize">/5 ratings</span>
         </td>
         <td class="movie-table-mpaa">
-          <%= image_tag "ratings/#{movie.mpaa_rating}.png" if movie.mpaa_rating %>
+          <%= image_tag "ratings/#{movie.mpaa_rating}.png", title: long_rating(movie.mpaa_rating) if movie.mpaa_rating %>
         </td>
         <% if admin? %>
           <td class="hidden-xs">

@@ -34,4 +34,16 @@ module ApplicationHelper
   def active_on(path)
     'active' if current_page?(path)
   end
+
+  LONG_RATINGS = {
+    "G" => "General audiences",
+    "PG" => "Parental guidance suggested",
+    "PG-13" => "Parents strongly cautioned",
+    "R" => "Restricted",
+    "NC-17" => "No one 17 and under admitted",
+  }.freeze
+
+  def long_rating(rating)
+    LONG_RATINGS[rating]
+  end
 end
