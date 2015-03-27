@@ -14,7 +14,7 @@
       <p class="lead"><%= @movie.plot %></p>
       <p>
         <strong><small>MPAA Rating</small></strong><br>
-        <%= @movie.mpaa || @movie.tmdb_mpaa ? "Rated #{@movie.tmdb_mpaa}" : "Not available" %>.
+        <%= @movie.mpaa || (@movie.tmdb_mpaa ? "Rated #{@movie.tmdb_mpaa}" : "Not available") %>. Refer to imdb's <%= link_to "parents guide", "http://www.imdb.com/title/tt#{@movie.imdb_id}/parentalguide", target: "_blank" %> for detailed information.
       </p>
     </div>
   </div>
