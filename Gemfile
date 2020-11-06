@@ -25,6 +25,7 @@ gem "themoviedb"
 gem "turbolinks"
 gem "uglifier"
 gem "nokogiri", "1.10.4"
+gem "rake", "<11" # https://stackoverflow.com/questions/35893584/nomethoderror-undefined-method-last-comment-after-upgrading-to-rake-11
 
 source "https://rails-assets.org" do
   gem "rails-assets-bootstrap3-typeahead"
