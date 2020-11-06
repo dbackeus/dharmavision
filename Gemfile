@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.5.5"
+ruby "2.5.8"
 
 gem "bootstrap-sass"
 gem "coffee-rails"
@@ -11,7 +11,7 @@ gem "intercom-rails"
 gem "jbuilder"
 gem "jquery-rails"
 gem "jquery-turbolinks"
-gem "mongoid"
+gem "mongoid", "~> 5.0"
 gem "newrelic_rpm"
 gem "omdb", github: "jvanbaarsen/omdb" # for imdb find method
 gem "rails", "~> 4.2.11"
@@ -37,11 +37,11 @@ group :development do
   gem "quiet_assets"
   gem "rb-fsevent", require: false
   gem "terminal-notifier-guard", require: false
+  gem "web-console"
 end
 
 group :development, :test do
   gem "byebug"
-  gem "web-console"
   gem "rspec-rails"
 end
 
