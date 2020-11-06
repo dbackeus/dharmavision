@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, class_name: "MongoidUser"
 
   resources :movies, except: %i[edit update] do
     collection do

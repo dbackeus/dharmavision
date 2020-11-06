@@ -1,6 +1,8 @@
-class User
+class MongoidUser
   include Mongoid::Document
   include Mongoid::Timestamps
+
+  store_in collection: "users"
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
@@ -18,8 +20,8 @@ class User
 
   field :admin, type: Boolean, default: false
 
-  has_many :ratings, dependent: :delete
-  has_many :suggested_movies, class_name: "Movie"
+  has_many :ratings, dependent: :delete, class_name: "MongoidRating"
+  has_many :suggested_movies, class_name: "MongoidMovie"
 
   validates_presence_of :name
 

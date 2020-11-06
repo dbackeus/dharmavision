@@ -1,6 +1,8 @@
-class Rating
+class MongoidRating
   include Mongoid::Document
   include Mongoid::Timestamps
+
+  store_in collection: "ratings"
 
   field :rating, type: Integer
   field :review, type: String

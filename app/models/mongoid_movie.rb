@@ -1,6 +1,8 @@
-class Movie
+class MongoidMovie
   include Mongoid::Document
   include Mongoid::Timestamps
+
+  store_in collection: "movies"
 
   field :title, type: String
   field :imdb_id, type: String
@@ -14,9 +16,9 @@ class Movie
   field :average_rating, type: Float, default: 0.0
   field :ratings_count, type: Integer, default: 0
 
-  embeds_many :titles, class_name: "MovieTitle"
+  embeds_many :titles, class_name: "MongoidMovieTitle"
 
-  belongs_to :creator, class_name: "User"
+  belongs_to :creator, class_name: "MongoidUser"
 
   has_many :ratings, dependent: :delete
 

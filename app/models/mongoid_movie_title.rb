@@ -1,10 +1,10 @@
-class MovieTitle
+class MongoidMovieTitle
   include Mongoid::Document
 
   field :version, type: String
   field :title, type: String
 
-  embedded_in :movie
+  embedded_in :movie, class_name: "MongoidMovie"
 
   validates_presence_of :version
   validates_presence_of :title
