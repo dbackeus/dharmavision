@@ -14,6 +14,7 @@ gem "jquery-turbolinks"
 gem "mongoid", "~> 5.0"
 gem "newrelic_rpm"
 gem "omdb", github: "jvanbaarsen/omdb" # for imdb find method
+gem "puma"
 gem "rails", "~> 4.2.11"
 gem "recursive-open-struct"
 gem "rest-client"
