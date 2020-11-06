@@ -13,9 +13,13 @@ gem "jquery-rails"
 gem "jquery-turbolinks"
 gem "mongoid", "~> 5.0"
 gem "newrelic_rpm"
+gem "nokogiri", "1.10.4"
 gem "omdb", github: "jvanbaarsen/omdb" # for imdb find method
+gem "omniauth-google-oauth2"
+gem "pg", "~> 0.20"
 gem "puma"
 gem "rails", "~> 4.2.11"
+gem "rake", "<11" # https://stackoverflow.com/questions/35893584/nomethoderror-undefined-method-last-comment-after-upgrading-to-rake-11
 gem "recursive-open-struct"
 gem "rest-client"
 gem "sass-rails"
@@ -24,8 +28,6 @@ gem "simple_form"
 gem "themoviedb"
 gem "turbolinks"
 gem "uglifier"
-gem "nokogiri", "1.10.4"
-gem "rake", "<11" # https://stackoverflow.com/questions/35893584/nomethoderror-undefined-method-last-comment-after-upgrading-to-rake-11
 
 source "https://rails-assets.org" do
   gem "rails-assets-bootstrap3-typeahead"

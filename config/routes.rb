@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, class_name: "MongoidUser"
+  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
+
+  resource :session, only: %i[new destroy]
 
   resources :movies, except: %i[edit update] do
     collection do
@@ -11,7 +13,7 @@ Rails.application.routes.draw do
 
   get "imdb/search"
 
-  root "movies#index"
+  root "sessions#new"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

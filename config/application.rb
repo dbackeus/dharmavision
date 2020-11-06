@@ -36,6 +36,7 @@ module Dharmavision
     config.action_mailer.default_url_options = { host: ENV.fetch("HOST") }
 
     config.generators do |g|
+      g.orm "active_record"
       g.view_specs false
       g.routing_specs false
       g.stylesheets false
