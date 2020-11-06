@@ -70,7 +70,7 @@ development:
 test:
   clients:
     default:
-      database: raagtime_test
+      database: dharmavision_test
       hosts:
         - localhost:27017
       options:
