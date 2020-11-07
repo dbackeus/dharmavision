@@ -1,7 +1,5 @@
-$ ->
-  $field = $("#movie-search")
-
-  $field.typeahead
+$(document).on "turbolinks:load", ->
+  $("#movie-search").typeahead
     delay: 200
     displayText: (movie) ->
       """<div class="search-result"><img src="#{movie.thumbnail}">#{movie.title}</div>"""

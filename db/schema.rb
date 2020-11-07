@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201106202333) do
+ActiveRecord::Schema.define(version: 20201107203322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,19 @@ ActiveRecord::Schema.define(version: 20201106202333) do
   add_index "movies", ["imdb_id"], name: "index_movies_on_imdb_id", unique: true, using: :btree
   add_index "movies", ["tmdb_id"], name: "index_movies_on_tmdb_id", unique: true, using: :btree
 
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "movie_id"
+    t.integer  "rating",     null: false
+    t.text     "review"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "ratings", ["movie_id", "user_id"], name: "index_ratings_on_movie_id_and_user_id", unique: true, using: :btree
+  add_index "ratings", ["movie_id"], name: "index_ratings_on_movie_id", using: :btree
+  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "name",                                null: false
     t.string   "email",                               null: false
@@ -52,4 +65,6 @@ ActiveRecord::Schema.define(version: 20201106202333) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
 
+  add_foreign_key "ratings", "movies"
+  add_foreign_key "ratings", "users"
 end

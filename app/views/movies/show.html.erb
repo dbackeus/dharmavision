@@ -27,7 +27,7 @@
 <div class="user-rating text-center padded">
   <strong>Your rating</strong><br>
   <% if user_signed_in? %>
-    <span data-raty data-movie-id="<%= @movie.id %>" data-score="<%= 0 %>"></span>
+    <span data-raty data-movie-id="<%= @movie.id %>" data-score="<%= user_rating.rating || 0 %>"></span>
     <span class="raty-target"></span>
     <%= image_tag "spinner.gif", class: "raty-pending" %>
   <% else %>

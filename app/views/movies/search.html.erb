@@ -6,7 +6,7 @@
       <% @results.each do |movie| %>
         <tr>
           <td>
-            <%= link_to image_tag(movie.poster_url("w92")), movie %>
+            <%= link_to image_tag(movie.poster_url(92)), movie %>
           </td>
           <td>
             <%= link_to movie.title, movie %>

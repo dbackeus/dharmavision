@@ -6,7 +6,7 @@ class MoviesController < ApplicationController
   end
 
   def suggested
-    @movies = Movie.suggested.order_by(ratings_count: :desc)
+    @movies = Movie.suggested.order(ratings_count: :desc)
   end
 
   def search

@@ -1,4 +1,4 @@
-$ ->
+$(document).on "turbolinks:load", ->
   $field = $("#tmdb-title")
   $feedback = $("#tmdb-title").parent().find(".form-control-feedback")
   $feedback.hide()

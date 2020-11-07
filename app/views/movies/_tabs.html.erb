@@ -6,8 +6,7 @@
     <%= link_to "Suggested", suggested_movies_path %>
   </li>
   <li style="float: right">
-    <%= button_to "Add Movie", new_movie_path, class: "btn btn-primary pull-right hidden visible-xs-inline", method: :get if user_signed_in? %>
-
-    <%= button_to "Suggest a new Movie", new_movie_path, class: "btn btn-primary pull-right hidden-xs", method: :get if user_signed_in? %>
+    <%= link_to "Add Movie", new_movie_path, class: "btn btn-primary hidden visible-xs-inline" if user_signed_in? %>
+    <%= link_to "Suggest a new Movie", new_movie_path, class: "btn btn-primary hidden-xs" if user_signed_in? %>
   </li>
 </ul>

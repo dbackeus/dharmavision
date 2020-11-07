@@ -1,5 +1,6 @@
 class Movie < ActiveRecord::Base
   belongs_to :creator, class_name: "User"
+  has_many :ratings, dependent: :delete_all
 
   before_validation :populate_from_the_the_movie_db, on: :create, if: :tmdb_id
 
@@ -11,7 +12,8 @@ class Movie < ActiveRecord::Base
   validates_presence_of :original_title
   validates_presence_of :released_on
 
-  scope :listed, -> { where("ratings_count > 4") }
+  scope :suggested, -> { where("ratings_count < 5") }
+  scope :listed, -> { where("ratings_count >= 5") }
 
   def poster_url(width = 500)
     if tmdb_poster_path
@@ -27,6 +29,10 @@ class Movie < ActiveRecord::Base
 
   def tmdb_movie
     @tmdb_movie ||= TheMovieDb.movie_details(tmdb_id)
+  end
+
+  def year
+    released_on.year
   end
 
   def populate_from_the_the_movie_db

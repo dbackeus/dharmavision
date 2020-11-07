@@ -23,8 +23,6 @@ module TheMovieDb
       params: params,
     )
 
-    Rails.logger.debug response.headers
-
     raise HttpError, "#{response.code}, #{response.body}" unless response.success?
 
     response
