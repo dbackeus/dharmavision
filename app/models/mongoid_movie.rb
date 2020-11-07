@@ -124,10 +124,6 @@ class MongoidMovie
     self.tmdb_mpaa = tmdb_movie.mpaa
   end
 
-  def set_accepted_status
-    update_attribute(:accepted, true) if !accepted && ratings.count >= 5
-  end
-
   def validate_imdb_id
     errors[:imdb_id] << "needs to be a valid imdb id or url" unless found_on_imdb?
   end

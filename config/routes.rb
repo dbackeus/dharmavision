@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
   resources :ratings, only: %i[create]
 
-  get "imdb/search"
+  get "tmdb/search"
 
   root "sessions#new"
 

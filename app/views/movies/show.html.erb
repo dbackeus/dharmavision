@@ -11,10 +11,10 @@
     </div>
     <div class="col-sm-8">
       <h1><%= @movie.title %></h1>
-      <p class="lead"><%= @movie.plot %></p>
+      <p class="lead"><%= @movie.overview %></p>
       <p>
         <strong><small>MPAA Rating</small></strong><br>
-        <%= @movie.mpaa || (@movie.tmdb_mpaa ? "Rated #{@movie.tmdb_mpaa}" : "Not available") %>. Refer to imdb's <%= link_to "parents guide", "http://www.imdb.com/title/tt#{@movie.imdb_id}/parentalguide", target: "_blank" %> for detailed information.
+        <%= @movie.mpaa_rating || "Not available" %>. Refer to imdb's <%= link_to "parents guide", "http://www.imdb.com/title/#{@movie.imdb_id}/parentalguide", target: "_blank" %> for detailed information.
       </p>
     </div>
   </div>
@@ -27,7 +27,7 @@
 <div class="user-rating text-center padded">
   <strong>Your rating</strong><br>
   <% if user_signed_in? %>
-    <span data-raty data-movie-id="<%= @movie.id %>" data-score="<%= user_rating.rating || 0 %>"></span>
+    <span data-raty data-movie-id="<%= @movie.id %>" data-score="<%= 0 %>"></span>
     <span class="raty-target"></span>
     <%= image_tag "spinner.gif", class: "raty-pending" %>
   <% else %>

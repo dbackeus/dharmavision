@@ -1,11 +1,8 @@
 require "rails_helper"
 
-describe ImdbController do
+describe TmdbController do
   describe "GET search" do
-    it "searches imdb" do
-      stub_request(:get, "http://akas.imdb.com/find?q=spirited%20away%3Bs=tt").
-        to_return(body: webmock("spirited_away_search.html"))
-
+    pending "searches tmdb" do
       get :search, query: "spirited away"
 
       json_response = JSON.parse(response.body)

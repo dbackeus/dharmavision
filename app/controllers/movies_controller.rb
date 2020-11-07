@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create destroy]
 
   def index
-    @movies = Movie.listed.order_by(average_rating: :desc, ratings_count: :desc)
+    @movies = Movie.listed.order(average_rating: :desc, ratings_count: :desc)
   end
 
   def suggested
@@ -27,13 +27,16 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movie = Movie.new movie_params.merge(creator: current_user)
+    tmdb_id = params.require(:movie).require(:tmdb_id)
+    @movie = Movie.find_or_initialize_by(tmdb_id: tmdb_id)
 
+    if @movie.persisted?
+      return redirect_to movie_path(existing_movie), notice: "The movie had already been added, here it is..."
+    end
+
+    @movie.creator = current_user
     if @movie.save
       redirect_to @movie, notice: "Movie was successfully created. Don't forget to add your rating!"
-    elsif @movie.errors[:imdb_id].include?("is already taken")
-      existing_movie = Movie.find_by(imdb_id: @movie.imdb_id)
-      redirect_to movie_path(existing_movie), notice: "The movie had already been added, here it is..."
     else
       render :new
     end
@@ -52,7 +55,7 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:imdb_id)
+
   end
 
   def user_rating

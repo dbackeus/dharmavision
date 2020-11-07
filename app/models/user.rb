@@ -5,5 +5,4 @@ class User < ActiveRecord::Base
 
   has_many :ratings, dependent: :delete_all
   has_many :suggested_movies, class_name: "Movie"
-
 end
