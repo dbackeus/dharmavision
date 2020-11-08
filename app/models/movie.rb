@@ -1,6 +1,7 @@
 class Movie < ActiveRecord::Base
   belongs_to :creator, class_name: "User"
   has_many :ratings, dependent: :delete_all
+  has_many :titles, class_name: "MovieTitle", dependent: :delete_all
 
   before_validation :populate_from_the_the_movie_db, on: :create, if: :tmdb_id
 
@@ -47,6 +48,10 @@ class Movie < ActiveRecord::Base
 
     if us_release = tmdb_movie.release_dates.results.find { |release| release.iso_3166_1 == "US" }
       self.mpaa_rating = us_release.release_dates.map(&:certification).find(&:present?)
+    end
+
+    self.titles = [title, original_title].concat(tmdb_movie.alternative_titles.titles.map(&:title)).uniq.map do |title|
+      MovieTitle.new(title: title)
     end
   end
 end

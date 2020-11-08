@@ -20,7 +20,6 @@ gem "rake", "<11" # https://stackoverflow.com/questions/35893584/nomethoderror-u
 gem "recursive-open-struct"
 gem "rest-client"
 gem "sass-rails"
-gem "searchkick"
 gem "simple_form"
 gem "turbolinks"
 gem "typhoeus"

@@ -10,7 +10,12 @@ class MoviesController < ApplicationController
   end
 
   def search
-    @results = Movie.search(params[:query], fields: [{"title^100" => :word_start}, :titles], limit: 10)
+    matching_movie_ids = MovieTitle
+      .where("title ILIKE ?", "%#{params[:query]}%")
+      .distinct
+      .pluck(:movie_id)
+
+    @results = Movie.where(id: matching_movie_ids)
   end
 
   def show
