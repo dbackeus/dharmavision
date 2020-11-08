@@ -15,11 +15,12 @@ $(document).on "turbolinks:load", ->
       "#{title} - #{year}"
     matcher: (movie) -> movie.release_date # ignore unreleased movies
     source: (query, process) ->
-      request = $.get("/tmdb/search.json?query=#{query}", beforeSend: -> $feedback.fadeIn())
-      request.then -> $feedback.fadeOut()
-      request.success(process)
-      request
+      $.ajax
+        url: "/tmdb/search.json?query=#{query}"
+        beforeSend: -> $feedback.fadeIn()
+        complete: -> $feedback.fadeOut()
+        success: process
     updater: (movie) ->
       $("#movie_tmdb_id").val(movie.id)
       $("#movie-submit").attr("disabled", false)
-      movie.title
+      movie

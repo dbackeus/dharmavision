@@ -6,7 +6,6 @@ gem "activerecord-explain-analyze"
 gem "bootstrap-sass"
 gem "coffee-rails"
 gem "devise"
-gem "dotenv-rails"
 gem "intercom-rails"
 gem "jbuilder"
 gem "jquery-rails"
@@ -19,8 +18,8 @@ gem "puma"
 gem "rails", "~> 4.2.11"
 gem "rake", "<11" # https://stackoverflow.com/questions/35893584/nomethoderror-undefined-method-last-comment-after-upgrading-to-rake-11
 gem "recursive-open-struct"
-gem "rest-client"
 gem "sass-rails"
+gem "sprockets", "<4"
 gem "simple_form"
 gem "turbolinks"
 gem "typhoeus"
@@ -43,6 +42,7 @@ end
 
 group :development, :test do
   gem "byebug"
+  gem "dotenv-rails"
   gem "rspec-rails"
 end
 
