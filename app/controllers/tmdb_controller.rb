@@ -1,6 +1,15 @@
 class TmdbController < ApplicationController
   def search
-    results = TheMovieDb.search(params[:query]).fetch("results")
-    render json: results.as_json
+    query = params.require(:query)
+
+    if year = query[/\d{4}$/]
+      query_without_year = query[0..-5]
+      with_year = TheMovieDb.search(query_without_year, year: year).fetch("results")
+    end
+    without_year = TheMovieDb.search(query).fetch("results")
+
+    results = Array(with_year).concat(without_year)
+
+    render json: results
   end
 end

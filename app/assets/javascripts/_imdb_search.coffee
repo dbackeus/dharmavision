@@ -1,6 +1,6 @@
 $(document).on "turbolinks:load", ->
   $field = $("#tmdb-title")
-  $feedback = $("#tmdb-title").parent().find(".form-control-feedback")
+  $feedback = $field.parent().find(".form-control-feedback")
   $feedback.hide()
 
   $field.typeahead

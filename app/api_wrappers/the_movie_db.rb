@@ -12,8 +12,8 @@ module TheMovieDb
     JSON.parse get("movie/#{movie_id}", append_to_response: "alternative_titles,release_dates").body, object_class: OpenStruct
   end
 
-  def self.search(query)
-    JSON.parse get("search/movie", query: query, include_adult: false).body
+  def self.search(query, year: nil)
+    without_year = JSON.parse get("search/movie", query: query, include_adult: false, year: year).body
   end
 
   def self.get(path, params = {})
