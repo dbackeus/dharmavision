@@ -10,12 +10,7 @@ class MoviesController < ApplicationController
   end
 
   def search
-    matching_movie_ids = MovieTitle
-      .where("title ILIKE ?", "%#{params[:query]}%")
-      .distinct
-      .pluck(:movie_id)
-
-    @results = Movie.where(id: matching_movie_ids)
+    @results = Movie.search(params[:query])
   end
 
   def show

@@ -1,4 +1,12 @@
 class Movie < ActiveRecord::Base
+  include PgSearch::Model
+  pg_search_scope :search,
+    associated_against: { titles: :title },
+    using: {
+      trigram: { threshold: 0.1 },
+      tsearch: { prefix: true, any_word: true },
+    }
+
   belongs_to :creator, class_name: "User"
   has_many :ratings, dependent: :delete_all
   has_many :titles, class_name: "MovieTitle", dependent: :delete_all

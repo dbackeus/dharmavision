@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 ruby "2.5.8"
 
+gem "activerecord-explain-analyze"
 gem "bootstrap-sass"
 gem "coffee-rails"
 gem "devise"
@@ -14,6 +15,7 @@ gem "newrelic_rpm"
 gem "nokogiri", "1.10.4"
 gem "omniauth-google-oauth2"
 gem "pg", "~> 0.20"
+gem "pg_search"
 gem "puma"
 gem "rails", "~> 4.2.11"
 gem "rake", "<11" # https://stackoverflow.com/questions/35893584/nomethoderror-undefined-method-last-comment-after-upgrading-to-rake-11
