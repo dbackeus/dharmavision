@@ -1,5 +1,6 @@
 module Omdb
-  BASE_URL = "https://www.omdbapi.com"
+  BASE_URL = "https://www.omdbapi.com".freeze
+
   def self.find_by_imdb_id(imdb_id)
     response = Typhoeus.get("#{BASE_URL}?i=#{imdb_id}&apikey=#{ENV.fetch('OMDB_API_KEY')}")
 

@@ -12,7 +12,7 @@ module TheMovieDb
   end
 
   def self.search(query, year: nil)
-    without_year = JSON.parse get("search/movie", query: query, include_adult: false, year: year).body
+    JSON.parse get("search/movie", query: query, include_adult: false, year: year).body
   end
 
   def self.get(path, params = {})
