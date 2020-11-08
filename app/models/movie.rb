@@ -52,7 +52,11 @@ class Movie < ActiveRecord::Base
     self.overview = tmdb_movie.overview
     self.released_on = tmdb_movie.release_date
     self.tmdb_poster_path = tmdb_movie.poster_path
-    self.omdb_poster_url = Omdb.find_by_imdb_id(imdb_id).Poster unless tmdb_poster_path
+
+    unless tmdb_poster_path
+      self.omdb_poster_url = Omdb.find_by_imdb_id(imdb_id).Poster
+      self.omdb_poster_url = nil if omdb_poster_url == "N/A"
+    end
 
     if us_release = tmdb_movie.release_dates.results.find { |release| release.iso_3166_1 == "US" }
       self.mpaa_rating = us_release.release_dates.map(&:certification).find(&:present?)
