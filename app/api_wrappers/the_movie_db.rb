@@ -3,7 +3,6 @@ module TheMovieDb
   HEADERS = {
     "Content-Type" => "application/json;charset=utf-8",
     "Accept" => "application/json",
-    "Authorization" => "Bearer #{ENV.fetch('THEMOVIEDB_API_KEY_V4')}"
   }.freeze
 
   HttpError = Class.new(StandardError)
@@ -17,6 +16,8 @@ module TheMovieDb
   end
 
   def self.get(path, params = {})
+    params[:api_key] = ENV.fetch("TMDB_API_KEY")
+
     response = Typhoeus.get(
       "#{BASE_URL}/#{path}",
       headers: HEADERS,
