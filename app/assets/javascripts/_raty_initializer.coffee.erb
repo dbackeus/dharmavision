@@ -2,7 +2,7 @@ refreshAverageRating = (movieId) ->
   $.get("/movies/#{movieId}.json").success (movie) ->
     $(".big-rating-star").html(movie.average_rating)
 
-$ ->
+$(document).on 'turbolinks:load', ->
   $("[data-raty]").raty
     path: ""
     starOff: "<%= image_path('raty/lib/images/star-off.png') %>"
@@ -42,5 +42,3 @@ $ ->
         refreshAverageRating(movieId)
       request.fail ->
         $(".raty-pending").fadeOut(-> $(".raty-fail").fadeIn())
-
-

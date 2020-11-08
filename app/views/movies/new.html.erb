@@ -5,19 +5,19 @@
 <h1>Suggest a Movie</h1>
 
 <div class="form-group has-feedback">
-  <label class="control-label" for="imdb-title">Title</label>
-  <input class="form-control" type="text" id="imdb-title" autocomplete="off">
+  <label class="control-label" for="tmdb-title">Title</label>
+  <input class="form-control" type="text" id="tmdb-title" autocomplete="off">
   <span class="form-control-feedback" aria-hidden="true">
     <%= image_tag "spinner.gif" %>
   </span>
   <p class="help-block">
-    Start typing the English name of the movie you wish to add and select it from the list fetched from
-    <a href="http://imdb.com" target="_blank">imdb.com</a>
+    Start typing the name of the movie you wish to add and select it from the list fetched from
+    <a href="https://www.themoviedb.org" target="_blank">themoviedb.org</a>
   </p>
 </div>
 
 <%= simple_form_for @movie do |f| %>
-  <%= f.input :imdb_id, as: :hidden %>
+  <%= f.input :tmdb_id, as: :hidden %>
 
   <%= f.button :submit, "Add Movie", id: "movie-submit", class: "btn-success", disabled: true, data: { "disable-with" => "Adding Movie..."} %>
 <% end %>

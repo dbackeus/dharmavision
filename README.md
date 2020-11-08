@@ -1,7 +1,5 @@
 # Dharmavision
 
-## Current state
+### Future considerations
 
-- IMDB has ceased and desisted the `imdb` gem
-- Heroku version has lost its database
-- Would likely have to refactor to only use "the movie database" instead of imdb
+Searching isn't perfect. Would be nice to support fuzzy search with partial words. Also if performance becomes an issue we need to figure out how to create an index (https://scoutapm.com/blog/how-to-make-text-searches-in-postgresql-faster-with-trigram-similarity and https://stackoverflow.com/a/29658928/1075108).

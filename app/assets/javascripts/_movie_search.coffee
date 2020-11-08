@@ -1,10 +1,14 @@
-$ ->
-  $field = $("#movie-search")
-
-  $field.typeahead
+$(document).on "turbolinks:load", ->
+  $("#movie-search").typeahead
     delay: 200
     displayText: (movie) ->
-      """<div class="search-result"><img src="#{movie.thumbnail}">#{movie.title}</div>"""
+      title =
+        if movie.title == movie.original_title
+          movie.title
+        else
+          "#{movie.title} (#{movie.original_title})"
+
+      """<div class="search-result"><img src="#{movie.thumbnail}">#{title} - #{movie.year}</div>"""
     matcher: (movie) ->
       true
     source: (query, process) ->

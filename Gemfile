@@ -1,29 +1,30 @@
 source "https://rubygems.org"
 
-ruby "2.5.5"
+ruby "2.5.8"
 
+gem "activerecord-explain-analyze"
 gem "bootstrap-sass"
 gem "coffee-rails"
 gem "devise"
 gem "dotenv-rails"
-gem "imdb"
 gem "intercom-rails"
 gem "jbuilder"
 gem "jquery-rails"
-gem "jquery-turbolinks"
-gem "mongoid"
 gem "newrelic_rpm"
-gem "omdb", github: "jvanbaarsen/omdb" # for imdb find method
+gem "nokogiri", "1.10.4"
+gem "omniauth-google-oauth2"
+gem "pg", "~> 0.20"
+gem "pg_search"
+gem "puma"
 gem "rails", "~> 4.2.11"
+gem "rake", "<11" # https://stackoverflow.com/questions/35893584/nomethoderror-undefined-method-last-comment-after-upgrading-to-rake-11
 gem "recursive-open-struct"
 gem "rest-client"
 gem "sass-rails"
-gem "searchkick"
 gem "simple_form"
-gem "themoviedb"
 gem "turbolinks"
+gem "typhoeus"
 gem "uglifier"
-gem "nokogiri", "1.10.4"
 
 source "https://rails-assets.org" do
   gem "rails-assets-bootstrap3-typeahead"
@@ -37,17 +38,15 @@ group :development do
   gem "quiet_assets"
   gem "rb-fsevent", require: false
   gem "terminal-notifier-guard", require: false
+  gem "web-console"
 end
 
 group :development, :test do
   gem "byebug"
-  gem "web-console"
   gem "rspec-rails"
 end
 
 group :test do
-  gem "database_cleaner"
-  gem "mongoid-rspec"
   gem "factory_girl_rails"
   gem "webmock"
 end
