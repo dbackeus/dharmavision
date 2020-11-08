@@ -23,8 +23,9 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
-  config.include Mongoid::Matchers, type: :model
   config.include FactoryGirl::Syntax::Methods
+
+  config.use_transactional_examples = true
 
   config.before do
     I18n.locale = :en
@@ -43,16 +44,6 @@ RSpec.configure do |config|
 
     stub_request(:get, "http://api.themoviedb.org/3/movie/19666?api_key=themoviedb_api_key&append_to_response=alternative_titles,releases").
       to_return(body: webmock("themoviedb.org/lagaan.json"))
-
-    DatabaseCleaner.start
-  end
-
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
-  end
-
-  config.after(:each) do
-    DatabaseCleaner.clean
   end
 
   config.render_views
@@ -62,8 +53,4 @@ end
 
 def webmock(file)
   File.read("spec/fixtures/webmock/#{file}")
-end
-
-def oid
-  BSON::ObjectId.from_string("550c0b5d446176147d000000")
 end

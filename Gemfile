@@ -10,7 +10,6 @@ gem "dotenv-rails"
 gem "intercom-rails"
 gem "jbuilder"
 gem "jquery-rails"
-gem "mongoid", "~> 5.0"
 gem "newrelic_rpm"
 gem "nokogiri", "1.10.4"
 gem "omniauth-google-oauth2"
@@ -48,8 +47,6 @@ group :development, :test do
 end
 
 group :test do
-  gem "database_cleaner"
-  gem "mongoid-rspec"
   gem "factory_girl_rails"
   gem "webmock"
 end
