@@ -1,6 +1,8 @@
 refreshAverageRating = (movieId) ->
-  $.get("/movies/#{movieId}.json").success (movie) ->
-    $(".big-rating-star").html(movie.average_rating)
+  $.ajax
+    url: "/movies/#{movieId}.json"
+    success: (movie) ->
+      $(".big-rating-star").html(movie.average_rating)
 
 $(document).on 'turbolinks:load', ->
   $("[data-raty]").raty
@@ -36,9 +38,13 @@ $(document).on 'turbolinks:load', ->
           movie_id: movieId
           rating: score
 
-      request = $.post "/ratings.json", params
-      request.success ->
-        $(".raty-pending").fadeOut(-> $(".raty-success").fadeIn())
-        refreshAverageRating(movieId)
-      request.fail ->
-        $(".raty-pending").fadeOut(-> $(".raty-fail").fadeIn())
+      request = $.ajax
+        method: "POST"
+        url: "/ratings.json"
+        data: params
+        success: ->
+          $(".raty-pending").fadeOut(-> $(".raty-success").fadeIn())
+          refreshAverageRating(movieId)
+        fail: ->
+          $(".raty-pending").fadeOut(-> $(".raty-fail").fadeIn())
+
