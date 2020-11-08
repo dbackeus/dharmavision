@@ -16,7 +16,7 @@ gem "pg", "~> 0.20"
 gem "pg_search"
 gem "puma"
 gem "rails", "~> 4.2.11"
-gem "rake", "<11" # https://stackoverflow.com/questions/35893584/nomethoderror-undefined-method-last-comment-after-upgrading-to-rake-11
+gem "rake", "<13" # https://stackoverflow.com/questions/35893584/nomethoderror-undefined-method-last-comment-after-upgrading-to-rake-11
 gem "recursive-open-struct"
 gem "sass-rails"
 gem "sprockets", "<4"
