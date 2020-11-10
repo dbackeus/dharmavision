@@ -7,10 +7,12 @@ module TheMovieDb
 
   HttpError = Class.new(StandardError)
 
+  # https://developers.themoviedb.org/3/movies/get-movie-details
   def self.movie_details(movie_id)
     JSON.parse get("movie/#{movie_id}", append_to_response: "alternative_titles,release_dates").body, object_class: OpenStruct
   end
 
+  # https://developers.themoviedb.org/3/search/search-movies
   def self.search(query, year: nil)
     JSON.parse get("search/movie", query: query, include_adult: false, year: year).body
   end
