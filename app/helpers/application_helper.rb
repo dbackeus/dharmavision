@@ -10,6 +10,14 @@ module ApplicationHelper
     ALERT_CLASSES[flash_type] || flash_type
   end
 
+  def buildless_module(name)
+    url = BuildlessCache.modules[name]
+
+    raise "module '#{name}' not found" unless url
+
+    %(<script type="module-shim" src="#{url}"></script>).html_safe
+  end
+
   def gravatar_url(email)
     hash = Digest::MD5.hexdigest(email)
     "https://www.gravatar.com/avatar/#{hash}"

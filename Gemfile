@@ -4,12 +4,9 @@ ruby File.read(".ruby-version").chomp
 
 gem "activerecord-explain-analyze"
 gem "bootsnap", require: false
-gem "bootstrap-sass"
-gem "coffee-rails"
 gem "devise"
 gem "intercom-rails"
 gem "jbuilder"
-gem "jquery-rails"
 gem "newrelic_rpm"
 gem "nokogiri"
 gem "omniauth-google-oauth2"
@@ -21,14 +18,9 @@ gem "rails"
 gem "sass-rails"
 gem "sprockets", "<4"
 gem "simple_form"
-gem "turbolinks"
+gem "turbolinks" # for the ruby part, see eg. Devise configuration
 gem "typhoeus"
 gem "uglifier"
-
-source "https://rails-assets.org" do
-  gem "rails-assets-bootstrap3-typeahead"
-  gem "rails-assets-raty"
-end
 
 group :development do
   gem "guard", require: false

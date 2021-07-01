@@ -13,11 +13,11 @@
  *= require_self
  */
 
-@import "bootstrap-sprockets";
-@import "bootstrap/variables";
-@import "variables";
-@import "bootstrap";
-@import "raty";
+$gray-base: #000;
+$gray: #CCC;
+$grid-gutter-width: 10px;
+$screen-sm-min: 400px;
+$gray-light: lighten($gray-base, 80%);
 
 .user-icon {
   width: 26px;
@@ -77,16 +77,6 @@
   }
 }
 
-.link-secondary {
-  color: $gray-light;
-  margin-left: $grid-gutter-width / 2;
-}
-
-.link-secondary:hover {
-  color: $gray;
-  text-decoration: none;
-}
-
 .form-control-feedback img {
   width: 60%;
 }
@@ -141,3 +131,23 @@
     width: 350px;
   }
 }
+
+// Raty
+
+.raty-target {
+  text-align: right;
+  width: 36px;
+  display: inline-block;
+  color: $gray-light;
+
+  .raty-target-score {
+    color: $gray-base;
+  }
+}
+
+.raty-pending {
+  display: none;
+  width: 16px;
+  margin-left: 4px;
+}
+

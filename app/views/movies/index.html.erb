@@ -26,7 +26,7 @@
           <%= link_to movie.title, movie %> (<%= movie.year %>)
         </td>
         <td class="movie-table-ranking">
-          <%= image_tag "raty/lib/images/star-on.png" %> <%= movie.average_rating %>
+          <%= image_tag "/images/raty/star-on.png" %> <%= movie.average_rating %>
         </td>
         <td class="movie-table-mpaa">
           <%= image_tag "ratings/#{movie.mpaa_rating}.png", title: long_rating(movie.mpaa_rating) if movie.mpaa_rating %>
