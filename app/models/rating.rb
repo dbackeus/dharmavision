@@ -11,6 +11,10 @@ class Rating < ActiveRecord::Base
     super(review.presence)
   end
 
+  def rating
+    super || 0
+  end
+
   private
 
   def update_movie_average_rating

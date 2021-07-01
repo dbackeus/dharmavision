@@ -134,19 +134,19 @@ $gray-light: lighten($gray-base, 80%);
 
 // Raty
 
-.raty-target {
+.user-rating-text {
   text-align: right;
   width: 36px;
   display: inline-block;
   color: $gray-light;
 
-  .raty-target-score {
+  .user-rating-text-score {
     color: $gray-base;
   }
 }
 
-.raty-pending {
-  display: none;
+.user-rating-pending {
+  opacity: 0%;
   width: 16px;
   margin-left: 4px;
 }

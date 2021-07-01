@@ -1,4 +1,5 @@
-import raty from 'javascripts/raty'
+import ujs from '@rails/ujs' // appears to implicitly run .start()
+import rater from 'javascripts/rater'
 import tmdb_search from 'javascripts/tmdb_search'
 import movie_search from 'javascripts/movie_search'
 import turbolinks from 'turbolinks'

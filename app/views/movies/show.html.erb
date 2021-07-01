@@ -20,16 +20,24 @@
   </div>
 </div>
 
-<div class="big-rating-star center-block">
+<div id="movie-rating-star" class="big-rating-star center-block">
   <%= @movie.average_rating %>
 </div>
 
 <div class="user-rating text-center padded">
   <strong>Your rating</strong><br>
   <% if user_signed_in? %>
-    <span data-raty data-movie-id="<%= @movie.id %>" data-score="<%= user_rating.rating || 0 %>"></span>
-    <span class="raty-target"></span>
-    <%= image_tag "spinner.gif", class: "raty-pending" %>
+    <sl-rating
+      id="rater"
+      data-movie-id="<%= @movie.id %>"
+      value="<%= user_rating.rating %>"
+      max="10"
+      style="--symbol-size: 16px; --symbol-spacing: 2px;"
+    ></sl-rating>
+    <span class="user-rating-text">
+      <span class="user-rating-text-score" id="rater-score-text"><%= user_rating.rating %></span>/10
+    </span>
+    <%= image_tag "spinner.gif", id: "rater-pending", class: "user-rating-pending" %>
   <% else %>
     <p><%= link_to "Sign in", new_user_session_path %> to add a rating...</p>
   <% end %>
