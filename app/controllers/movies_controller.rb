@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create destroy]
 
   def index
-    @movies = Movie.listed.order(average_rating: :desc, ratings_count: :desc)
+    @movies = Movie.order(average_rating: :desc, ratings_count: :desc)
   end
 
   def suggested

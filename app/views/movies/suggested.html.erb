@@ -2,32 +2,31 @@
 
 <%= render "tabs" %>
 
-<h1>Suggested movies</h1>
+<%= h1 "Suggested Movies" %>
 
-<p>
+<p class="mb-5">
   Here are the movies that have been suggested but have not yet received the 5 ratings
   required to make it into the top 108. Please consider rating some of them to get
   them into the list!
 </p>
 
-<table class="table movie-table table-striped">
+<table class="w-full">
   <tbody>
     <% @movies.each_with_index do |movie, index| %>
-      <tr>
-        <td class="movie-table-poster">
-          <%= link_to image_tag(movie.poster_url(92)), movie if movie.poster_url.present? %>
+      <tr class="odd:bg-gray-100">
+        <td class="w-12">
+          <%= link_to image_tag(movie.poster_url(92), class: "h-16"), movie if movie.poster_url.present? %>
         </td>
-        <td class="movie-table-title">
+        <td style="width: 400px;">
           <%= link_to movie.title, movie %> (<%= movie.year %>)
         </td>
-        <td class="movie-table-ranking">
-          <span class="deemphasize">
-            <%= image_tag "/buildless/images/raty/star-on.png" %>
-          </span>
-          <%= movie.ratings_count %><span class="deemphasize">/5 ratings</span>
+        <td class="w-24 text-gray-500 align-middle">
+          <%= image_tag "/buildless/images/raty/star-on.png", class: "inline" %> <%= movie.ratings_count %>/5 ratings
         </td>
-        <td class="movie-table-mpaa">
-          <%= image_tag "ratings/#{movie.mpaa_rating}.png", title: long_rating(movie.mpaa_rating) if movie.mpaa_rating %>
+        <td class="w-20 pr-4">
+          <% if movie.mpaa_rating %>
+            <%= image_tag "ratings/#{movie.mpaa_rating}.png", title: long_rating(movie.mpaa_rating), class: "h-5 opacity-50" %>
+          <% end %>
         </td>
         <% if admin? %>
           <td class="hidden-xs">

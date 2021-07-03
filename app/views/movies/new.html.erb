@@ -1,19 +1,21 @@
-<p>
+<% page_title "Add movie" %>
+
+<p class="mb-5">
   <%= link_back("Back to list", if: request.referer.to_s[suggested_movies_path], else: movies_path) %>
 </p>
 
-<h1>Suggest a Movie</h1>
+<%= h1 "Add a movie" %>
 
-<div class="form-group has-feedback" style="position: relative;">
-  <label class="control-label" for="tmdb-title">Title</label>
-  <input class="form-control" type="text" id="tmdb-title" autocomplete="off">
-  <ul id="tmdb-search-results" class="search-result-list dropdown-menu">
-  </ul>
-  <span class="form-control-feedback" aria-hidden="true">
+<label class="inline-block w-full mb-2 font-bold" for="tmdb-title">Title</label>
+<div class="relative">
+  <input id="tmdb-title" autofocus placeholder="Search movie title..." class="w-full rounded border-1 border-gray-400 py-2 px-3 mr-4 text-gray-800" type="text" autocomplete="off">
+  <span id="tmdb-spinner" class="absolute opacity-0 right-3 top-3 w-5 h-5" aria-hidden="true">
     <%= image_tag "spinner.gif" %>
   </span>
-  <p class="help-block">
-    Start typing the name of the movie you wish to add and select it from the list fetched from
-    <a href="https://www.themoviedb.org" target="_blank">themoviedb.org</a>
-  </p>
 </div>
+<p class="mt-2 text-gray-500 mb-8">
+  Start typing the name of the movie you wish to add and select it from the list fetched from
+  <a href="https://www.themoviedb.org" target="_blank">themoviedb.org</a>
+</p>
+
+<div id="tmdb-search-results"></div>

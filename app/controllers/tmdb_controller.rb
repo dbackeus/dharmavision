@@ -1,6 +1,8 @@
 class TmdbController < ApplicationController
   def search
-    query = params.require(:query)
+    query = params[:query]
+
+    return head 204 unless query.present?
 
     if year = query[/\d{4}$/]
       query_without_year = query[0..-5]

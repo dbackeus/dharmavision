@@ -15,7 +15,6 @@ gem "pg"
 gem "pg_search"
 gem "puma"
 gem "rails"
-gem "sass-rails"
 gem "sprockets", "<4"
 gem "simple_form"
 gem "turbolinks" # for the ruby part, see eg. Devise configuration

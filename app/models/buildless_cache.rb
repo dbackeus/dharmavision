@@ -1,4 +1,8 @@
 module BuildlessCache
+  # => {
+  #  "javascripts/file" => "/buildless/javascripts/file.js?checksum=xxx" },
+  #  "javascripts/file2" => "/buildless/javascripts/file2.js?checksum=yyy",
+  # }
   def self.modules
     @modules ||= Dir.glob("public/buildless/**/*.js").each_with_object({}) do |path, hash|
       name = path.delete_prefix("public/buildless/").delete_suffix(".js")

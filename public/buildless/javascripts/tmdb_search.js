@@ -25,7 +25,7 @@ document.addEventListener("turbolinks:load", () => {
 
   input.addEventListener("input", debounce(onSearchInput, 200))
 
-  feedback = input.parentNode.getElementsByClassName("form-control-feedback")[0]
+  feedback = document.getElementById("tmdb-spinner")
   feedback.style.opacity = '0%'
 
   tmdbIdInput = document.getElementById("movie_tmdb_id")

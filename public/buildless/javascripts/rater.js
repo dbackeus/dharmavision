@@ -8,7 +8,6 @@ document.addEventListener('turbolinks:load', () => {
   const rater = document.getElementById("rater")
   if(!rater) return
 
-  const raterPending = document.getElementById("rater-pending")
   const raterScoreText = document.getElementById("rater-score-text")
 
   rater.addEventListener("sl-change", (e) => {
@@ -16,8 +15,6 @@ document.addEventListener('turbolinks:load', () => {
     const movieId = e.target.dataset.movieId
 
     raterScoreText.innerHTML = score
-
-    raterPending.style.opacity = "100%"
 
     fetch("/ratings.json", {
       method: "POST",
@@ -32,8 +29,6 @@ document.addEventListener('turbolinks:load', () => {
         }
       }),
     }).then((e) => {
-      raterPending.style.opacity = "0%"
-
       if(e.ok) {
         refreshAverageRating(movieId)
       }
