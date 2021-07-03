@@ -1,0 +1,12 @@
+<% @results.each_with_index do |movie, i| %>
+  <li style="list-style: none;">
+    <%= simple_form_for Movie.new(tmdb_id: movie.id) do |f| %>
+      <div class="search-result">
+        <img src="https://image.tmdb.org/t/p/w300<%= movie.poster_path %>">
+        <%= movie.title %> - <%= movie.release_date.split("-").first %>
+      </div>
+      <%= f.input :tmdb_id, as: :hidden %>
+      <%= f.button :submit, label: "Add movie!" %>
+    <% end %>
+  </li>
+<% end %>

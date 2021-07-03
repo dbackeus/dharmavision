@@ -1,0 +1,10 @@
+<% @results.each_with_index do |movie, i| %>
+  <li style="list-style: none;" class="<%= "active" if i == 0 %>">
+    <%= link_to movie, class: "dropdown-item", role: "option" do %>
+      <div class="search-result">
+        <img src="<%= movie.poster_url(92) %>">
+        <%= movie.title %> - <%= movie.year %>
+      </div>
+    <% end %>
+  </li>
+<% end %>

@@ -3,13 +3,16 @@
   <head>
     <title><%= page_title %></title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.45/dist/themes/base.css">
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.45/dist/shoelace.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha512-Dop/vW3iOtayerlYAqCgkVr2aTr2ErwwTYOvRFUpzl2VhCMJyjQF0Q9TjUXIo6JhuM/3i0vVEt2e/7QQmnHQqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha512-oBTprMeNEKCnqfuqKd6sbvFzmFQtlXS3e0C/RGFV0hD6QzhHV+ODfaQbAlmY6/q0ubbwlAM/nCJjkrgA3waLzg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js" integrity="sha512-HWlJyU4ut5HkEj0QsK/IxBCY55n5ZpskyjVlAoV9Z7XQwwkqXoYdCIC93/htL3Gu5H3R4an/S0h2NXfbZk3g7w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script defer src="https://unpkg.com/es-module-shims@0.12.1/dist/es-module-shims.js"></script>
     <script type="importmap-shim">
       {
@@ -43,10 +46,11 @@
             </li>
           </ul>
 
-          <form action="<%= search_movies_path %>" class="navbar-form navbar-left" role="search">
-            <div class="form-group has-feedback">
-              <label for="movie-search" class="sr-only">Search</label>
+          <form action="<%= search_movies_path %>" class="navbar-form navbar-left">
+            <div class="form-group has-feedback" style="position: relative">
               <input class="form-control" type="text" id="movie-search" name="query" autocomplete="off" placeholder="Search movie title"></input>
+              <ul id="movie-search-results" class="search-result-list dropdown-menu">
+              </ul>
               <span class="form-control-feedback form-control-feedback-dim" aria-hidden="true">
                 <i class="glyphicon glyphicon-search"></i>
               </span>

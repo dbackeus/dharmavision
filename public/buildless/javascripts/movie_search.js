@@ -1,31 +1,22 @@
-$(document).on("turbolinks:load", function() {
-  $("#movie-search").typeahead({
-    delay: 200,
-    displayText(movie) {
-      if (!movie) { return }
+import debounce from "javascripts/utils/debounce"
 
-      const title =
-        movie.title === movie.original_title ?
-          movie.title
-        :
-          `${movie.title} (${movie.original_title})`
+let resultList
 
-      return `<div class="search-result"><img src="${movie.thumbnail}">${title} - ${movie.year}</div>`
-    },
-    matcher(movie) { return true },
-    source(query, process) {
-      return $.get(`/movies/search.json?query=${query}`, data => {
-        process(data)
-        this.$menu.addClass("hidden-xs")
-      })
-    },
-    updater(movie) {
-      Turbolinks.visit(`/movies/${movie.id}`)
-    }, // avoid displayText ending up in the search field when navigating
-    highlighter(displayText) {
-      return displayText
-    }
-  })
+async function onSearchInput(e) {
+  const query = e.target.value
+  const html = await fetch(`/movies/search?query=${query}`, {
+    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+  }).then(response => response.text())
+
+  resultList.style.display = html ? "block" : "none"
+  resultList.innerHTML = html
+}
+
+document.addEventListener("turbolinks:load", () => {
+  resultList = document.getElementById("movie-search-results")
+
+  const input = document.getElementById("movie-search")
+  input.addEventListener("input", debounce(onSearchInput, 200))
 })
 
 export default "no export from movie search"

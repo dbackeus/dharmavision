@@ -109,9 +109,19 @@ $gray-light: lighten($gray-base, 80%);
   padding: 0;
 }
 
+.search-result-list {
+  position: absolute;
+  background: white;
+  display: block;
+  z-index: 100;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .2);
+  padding: 10px 20px;
+}
+
 .search-result {
+  height: 50px;
   img {
-    height: 40px;
+    height: 50px;
     padding-bottom: 5px;
     padding-top: 5px;
     margin-right: 15px;

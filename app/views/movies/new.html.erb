@@ -4,9 +4,11 @@
 
 <h1>Suggest a Movie</h1>
 
-<div class="form-group has-feedback">
+<div class="form-group has-feedback" style="position: relative;">
   <label class="control-label" for="tmdb-title">Title</label>
   <input class="form-control" type="text" id="tmdb-title" autocomplete="off">
+  <ul id="tmdb-search-results" class="search-result-list dropdown-menu">
+  </ul>
   <span class="form-control-feedback" aria-hidden="true">
     <%= image_tag "spinner.gif" %>
   </span>
@@ -15,9 +17,3 @@
     <a href="https://www.themoviedb.org" target="_blank">themoviedb.org</a>
   </p>
 </div>
-
-<%= simple_form_for @movie do |f| %>
-  <%= f.input :tmdb_id, as: :hidden %>
-
-  <%= f.button :submit, "Add Movie", id: "movie-submit", class: "btn-success", disabled: true, data: { "disable-with" => "Adding Movie..."} %>
-<% end %>
