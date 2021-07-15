@@ -11,6 +11,14 @@ class MoviesController < ApplicationController
 
   def search
     @results = Movie.search(params[:query])
+
+    if request.xhr?
+      if @results.any?
+        render action: "search.ajax", layout: false
+      else
+        head 204
+      end
+    end
   end
 
   def show
@@ -23,7 +31,6 @@ class MoviesController < ApplicationController
   end
 
   def new
-    @movie = Movie.new
   end
 
   def create
@@ -31,7 +38,7 @@ class MoviesController < ApplicationController
     @movie = Movie.find_or_initialize_by(tmdb_id: tmdb_id)
 
     if @movie.persisted?
-      return redirect_to movie_path(existing_movie), notice: "The movie had already been added, here it is..."
+      return redirect_to movie_path(@movie), notice: "The movie had already been added, here it is..."
     end
 
     @movie.creator = current_user

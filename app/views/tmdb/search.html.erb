@@ -1,0 +1,31 @@
+<ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
+  <% @results.each_with_index do |movie, i| %>
+    <li>
+      <%= form_with model: Movie.new(tmdb_id: movie.id) do |f| %>
+        <%= f.hidden_field :tmdb_id, id: nil %>
+        <div class="text-center relative">
+          <% if movie.poster_path %>
+            <img src="https://image.tmdb.org/t/p/w300<%= movie.poster_path %>" class="w-full object-cover" style="aspect-ratio: 2 / 3">
+          <% else %>
+            <div class="w-full bg-gray-100 flex items-center justify-center" style="aspect-ratio: 2 / 3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-32 w-32 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
+              </svg>
+            </div>
+          <% end %>
+          <h3 class="mt-1">
+            <%= movie.title %>
+            <% if movie.release_date.present? %>
+              (<%= movie.release_date.split("-").first %>)
+            <% end %>
+          </h3>
+          <button type="submit" class="rounded-full p-2 flex items-center justify-center text-white bg-red-600 hover:bg-red-700 hover:text-white hover:no-underline absolute top-2 right-2 border-2 border-white focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4" />
+            </svg>
+          </button>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

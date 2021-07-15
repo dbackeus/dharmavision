@@ -1,6 +1,5 @@
 GEM
   remote: https://rubygems.org/
-  remote: https://rails-assets.org/
   specs:
     actioncable (6.1.4)
       actionpack (= 6.1.4)
@@ -66,25 +65,13 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
-    autoprefixer-rails (10.2.5.1)
-      execjs (> 0)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.7.5)
       msgpack (~> 1.0)
-    bootstrap-sass (3.4.1)
-      autoprefixer-rails (>= 5.2.1)
-      sassc (>= 2.0.0)
     builder (3.2.4)
     byebug (11.1.3)
     coderay (1.1.3)
-    coffee-rails (5.0.0)
-      coffee-script (>= 2.2.0)
-      railties (>= 5.2.0)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.12.2)
     concurrent-ruby (1.1.9)
     crack (0.4.5)
       rexml
@@ -156,10 +143,6 @@ GEM
       activesupport (> 3.0)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
-    jquery-rails (4.4.0)
-      rails-dom-testing (>= 1, < 3)
-      railties (>= 4.2.0)
-      thor (>= 0.14, < 2.0)
     jwt (2.2.3)
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -241,11 +224,6 @@ GEM
       bundler (>= 1.15.0)
       railties (= 6.1.4)
       sprockets-rails (>= 2.0.0)
-    rails-assets-bootstrap3-typeahead (4.0.2)
-      rails-assets-jquery (>= 1.7.0)
-    rails-assets-jquery (3.4.1)
-    rails-assets-raty (2.8.0)
-      rails-assets-jquery (>= 3.2.1, < 4)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -287,16 +265,6 @@ GEM
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
     ruby2_keywords (0.0.4)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
-    sassc (2.4.0)
-      ffi (~> 1.9)
-    sassc-rails (2.1.2)
-      railties (>= 4.0.0)
-      sassc (>= 2.0)
-      sprockets (> 3.0)
-      sprockets-rails
-      tilt
     shellany (0.0.1)
     simple_form (5.1.0)
       actionpack (>= 5.2)
@@ -314,7 +282,6 @@ GEM
       sprockets (>= 3.0.0)
     terminal-notifier-guard (1.7.0)
     thor (1.1.0)
-    tilt (2.0.10)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -346,9 +313,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-explain-analyze
   bootsnap
-  bootstrap-sass
   byebug
-  coffee-rails
   devise
   dotenv-rails
   factory_girl_rails
@@ -358,7 +323,6 @@ DEPENDENCIES
   heroku-deflater
   intercom-rails
   jbuilder
-  jquery-rails
   listen
   newrelic_rpm
   nokogiri
@@ -368,11 +332,8 @@ DEPENDENCIES
   pg_search
   puma
   rails
-  rails-assets-bootstrap3-typeahead!
-  rails-assets-raty!
   rb-fsevent
   rspec-rails
-  sass-rails
   simple_form
   spring
   spring-watcher-listen

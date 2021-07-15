@@ -2,9 +2,9 @@
 
 <%= render "tabs" %>
 
-<h1>Top 108</h1>
+<%= h1 "Top 108" %>
 
-<p>
+<p class="mb-5">
   The top 108 movies as voted by the Dharmavision members.
   Only movies with at least 5 ratings are allowed in the top 108.
   To see which movies are suggested but would need more ratings
@@ -12,27 +12,26 @@
   <%= link_to "suggested movies", suggested_movies_path %> page.
 </p>
 
-<table class="table movie-table table-striped">
+<table class="w-full">
   <tbody>
     <% @movies.each_with_index do |movie, index| %>
-      <tr>
-        <td class="movie-table-poster">
-          <%= link_to image_tag(movie.poster_url(92)), movie if movie.poster_url.present? %>
+      <tr class="odd:bg-gray-100">
+        <td class="w-16">
+          <%= link_to image_tag(movie.poster_url(92), class: "h-16"), movie if movie.poster_url.present? %>
         </td>
-        <td class="movie-table-rank">
-          <%= index + 1 %>
+        <td>
+          <%= index + 1 %>. <%= link_to movie.title, movie %> (<%= movie.year %>)
         </td>
-        <td class="movie-table-title">
-          <%= link_to movie.title, movie %> (<%= movie.year %>)
+        <td>
+          <%= image_tag "/buildless/images/raty/star-on.png", class: "inline" %> <%= movie.average_rating %>
         </td>
-        <td class="movie-table-ranking">
-          <%= image_tag "raty/lib/images/star-on.png" %> <%= movie.average_rating %>
-        </td>
-        <td class="movie-table-mpaa">
-          <%= image_tag "ratings/#{movie.mpaa_rating}.png", title: long_rating(movie.mpaa_rating) if movie.mpaa_rating %>
+        <td class="w-20 pr-4">
+          <% if movie.mpaa_rating %>
+            <%= image_tag "ratings/#{movie.mpaa_rating}.png", title: long_rating(movie.mpaa_rating), class: "h-5 opacity-50" %>
+          <% end %>
         </td>
         <% if admin? %>
-          <td class="hidden-sm">
+          <td class="sm:hidden">
               <%= link_to "Destroy", movie, method: :delete, data: { confirm: "Delete #{movie.title}?" } %>
           </td>
         <% end %>

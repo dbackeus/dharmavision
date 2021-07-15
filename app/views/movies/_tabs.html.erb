@@ -1,12 +1,14 @@
-<ul class="nav nav-tabs">
-  <li role="presentation" class="<%= active_on(movies_path) %>">
-    <%= link_to "Toplist", movies_path %>
-    </li>
-  <li role="presentation" class="<%= active_on(suggested_movies_path)  %>">
-    <%= link_to "Suggested", suggested_movies_path %>
-  </li>
-  <li style="float: right">
-    <%= link_to "Add Movie", new_movie_path, class: "btn btn-primary hidden visible-xs-inline" if user_signed_in? %>
-    <%= link_to "Suggest a new Movie", new_movie_path, class: "btn btn-primary hidden-xs" if user_signed_in? %>
-  </li>
-</ul>
+<nav class="flex mb-6 justify-between items-center">
+  <div class="flex">
+    <%= tab movies_path, "Toplist" %>
+    <%= tab suggested_movies_path, "Suggested" %>
+  </div>
+  <div>
+    <a href="<%= new_movie_path %>" class="rounded p-2 text-white bg-red-600 hover:bg-red-700 hover:text-white hover:no-underline">
+      <svg class="h-5 pb-1 inline" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4" />
+      </svg>
+      Add Movie
+    </a>
+  </div>
+</nav>

@@ -1,44 +1,53 @@
 <% page_title @movie.title %>
 
-<p>
+<p class="mb-5">
   <%= link_back("Back to list", if: request.referer.to_s[suggested_movies_path], else: movies_path) %>
 </p>
 
-<div class="container-fluid container-no-padding">
-  <div class="row">
-    <div class="col-sm-4">
-      <%= image_tag @movie.poster_url, class: "movie-poster" if @movie.poster_url %>
-    </div>
-    <div class="col-sm-8">
-      <h1><%= @movie.title %></h1>
-      <p class="lead"><%= @movie.overview %></p>
-      <p>
-        <strong><small>MPAA Rating</small></strong><br>
-        <%= @movie.mpaa_rating || "Not available" %>. Refer to imdb's <%= link_to "parents guide", "http://www.imdb.com/title/#{@movie.imdb_id}/parentalguide", target: "_blank" %> for detailed information.
-      </p>
-    </div>
+<div class="grid sm:grid-cols-3 sm:gap-8">
+  <div class="">
+    <%= image_tag @movie.poster_url, class: "w-full" if @movie.poster_url %>
+  </div>
+  <div class="sm:col-span-2">
+    <%= h1 @movie.title %>
+    <p class="text-xl font-light mb-5"><%= @movie.overview %></p>
+    <p>
+      <strong><small>MPAA Rating</small></strong><br>
+      <%= @movie.mpaa_rating || "Not available" %>. Refer to imdb's
+      <%= link_to "parents guide", "http://www.imdb.com/title/#{@movie.imdb_id}/parentalguide", target: "_blank" %>
+      for detailed information.
+    </p>
   </div>
 </div>
 
-<div class="big-rating-star center-block">
+<div
+  id="movie-rating-star"
+  class="mx-auto w-32 h-32 bg-cover mb-8 text-center font-bold text-4xl"
+  style="line-height: 140px; background-image: url(<%= image_path "big-star.png" %>)"
+>
   <%= @movie.average_rating %>
 </div>
 
-<div class="user-rating text-center padded">
+<div class="text-center mb-8">
   <strong>Your rating</strong><br>
   <% if user_signed_in? %>
-    <span data-raty data-movie-id="<%= @movie.id %>" data-score="<%= user_rating.rating || 0 %>"></span>
-    <span class="raty-target"></span>
-    <%= image_tag "spinner.gif", class: "raty-pending" %>
+    <sl-rating
+      id="rater"
+      data-movie-id="<%= @movie.id %>"
+      value="<%= user_rating.rating %>"
+      max="10"
+      style="--symbol-size: 16px; --symbol-spacing: 2px;"
+    ></sl-rating>
+    <span id="rater-score-text"><%= user_rating.rating %></span>/10
   <% else %>
-    <p><%= link_to "Sign in", new_user_session_path %> to add a rating...</p>
+    <p><%= link_to "Sign in", new_session_path %> to add a rating...</p>
   <% end %>
 </div>
 
-<p class="text-center">
+<div class="text-center mb-5">
   Read more at<br>
-  <%= link_to image_tag("imdb-logo.png"), "http://www.imdb.com/title/tt#{@movie.imdb_id}/", target: "_blank", class: "imdb-link" %>
-</p>
+  <%= link_to image_tag("imdb-logo.png", width: 130, class: "inline"), "http://www.imdb.com/title/#{@movie.imdb_id}/", target: "_blank" %>
+</div>
 
 <% if admin? %>
 <pre>

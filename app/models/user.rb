@@ -3,6 +3,6 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name
 
-  has_many :ratings, dependent: :delete_all
+  has_many :ratings, dependent: :destroy
   has_many :suggested_movies, class_name: "Movie"
 end
