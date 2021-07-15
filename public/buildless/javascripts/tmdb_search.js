@@ -5,20 +5,6 @@ let tmdbIdInput
 let submitButton
 let resultList
 
-async function onSearchInput(e) {
-  feedback.style.opacity = '100%'
-
-  const query = e.target.value
-  const html = await fetch(`/tmdb/search?query=${query}`, {
-    headers: { 'X-Requested-With': 'XMLHttpRequest' }
-  }).then(response => response.text())
-
-  feedback.style.opacity = '0%'
-
-  resultList.style.display = html ? "block" : "none"
-  resultList.innerHTML = html
-}
-
 document.addEventListener("turbolinks:load", () => {
   const input = document.getElementById("tmdb-title")
   if(!input) return
@@ -32,5 +18,19 @@ document.addEventListener("turbolinks:load", () => {
   submitButton = document.getElementById("movie-submit")
   resultList = document.getElementById("tmdb-search-results")
 })
+
+async function onSearchInput(e) {
+  feedback.style.opacity = '100%'
+
+  const query = e.target.value
+  const html = await fetch(`/tmdb/search?query=${query}`, {
+    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+  }).then(response => response.text())
+
+  feedback.style.opacity = '0%'
+
+  resultList.style.display = html ? "block" : "none"
+  resultList.innerHTML = html
+}
 
 export default "no export from tmdb search"
