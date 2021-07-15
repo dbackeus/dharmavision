@@ -59,7 +59,7 @@ module ApplicationHelper
         'text-gray-500 hover:text-gray-800'
       end
 
-      %(<a href="#{path}" class="py-4 px-6 focus:outline-none #{activeClasses}">#{label}</a>).html_safe
+    %(<a href="#{path}" class="py-4 px-6 focus:outline-none #{activeClasses}">#{label}</a>).html_safe
   end
 
   def h1(content)
@@ -67,6 +67,8 @@ module ApplicationHelper
   end
 
   def link_button(label, path, options)
-    link_to label, path, options.merge(class: "rounded p-3 text-white bg-red-600 hover:bg-red-700 hover:text-white hover:no-underline")
+    link_to label, path, options.merge(
+      class: "rounded p-3 text-white bg-red-600 hover:bg-red-700 hover:text-white hover:no-underline",
+    )
   end
 end
