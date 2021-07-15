@@ -46,7 +46,7 @@
 
 <div class="text-center mb-5">
   Read more at<br>
-  <%= link_to image_tag("imdb-logo.png", width: 130, class: "inline"), "http://www.imdb.com/title/tt#{@movie.imdb_id}/", target: "_blank" %>
+  <%= link_to image_tag("imdb-logo.png", width: 130, class: "inline"), "http://www.imdb.com/title/#{@movie.imdb_id}/", target: "_blank" %>
 </div>
 
 <% if admin? %>
