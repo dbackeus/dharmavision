@@ -28,16 +28,12 @@
   <%= @movie.average_rating %>
 </div>
 
+<!-- Rater -->
+<script defer src="<%= BuildlessCache.modules.fetch("javascripts/components/rater") %>"></script>
 <div class="text-center mb-8">
   <strong>Your rating</strong><br>
   <% if user_signed_in? %>
-    <sl-rating
-      id="rater"
-      data-movie-id="<%= @movie.to_param %>"
-      value="<%= user_rating.rating %>"
-      max="10"
-      style="--symbol-size: 16px; --symbol-spacing: 2px;"
-    ></sl-rating>
+    <dv-rater id="rater" value="<%= user_rating.rating %>" data-movie-id="<%= @movie.to_param %>"></dv-rater>
     <span id="rater-score-text"><%= user_rating.rating %></span>/10
   <% else %>
     <p><%= link_to "Sign in", new_session_path %> to add a rating...</p>
