@@ -12,6 +12,7 @@ class Movie < ActiveRecord::Base
   has_many :titles, class_name: "MovieTitle", dependent: :delete_all
 
   before_validation :populate_from_the_the_movie_db, on: :create, if: :tmdb_id
+  before_validation :generate_slug, on: :create, if: :title
 
   validates_presence_of :tmdb_id
   validates_presence_of :creator
@@ -20,9 +21,14 @@ class Movie < ActiveRecord::Base
   validates_presence_of :original_language
   validates_presence_of :original_title
   validates_presence_of :released_on
+  validates_presence_of :slug
 
   scope :suggested, -> { where("ratings_count < 5") }
   scope :listed, -> { where("ratings_count >= 5") }
+
+  def to_param
+    slug
+  end
 
   def poster_url(width = 500)
     if tmdb_poster_path
@@ -65,5 +71,11 @@ class Movie < ActiveRecord::Base
     self.titles = [title, original_title].concat(tmdb_movie.alternative_titles.titles.map(&:title)).uniq.map do |title|
       MovieTitle.new(title: title)
     end
+  end
+
+  def generate_slug
+    # Parameterize but avoid apostrophes being replaced by dashes
+    # Eg. "khalil-gibrans-the-prophet" instead of "khalil-gibran-s-the-prophet"
+    self.slug = title.gsub(/['`"]/, "").parameterize
   end
 end

@@ -33,7 +33,7 @@
   <% if user_signed_in? %>
     <sl-rating
       id="rater"
-      data-movie-id="<%= @movie.id %>"
+      data-movie-id="<%= @movie.to_param %>"
       value="<%= user_rating.rating %>"
       max="10"
       style="--symbol-size: 16px; --symbol-spacing: 2px;"
