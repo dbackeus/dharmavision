@@ -25,8 +25,12 @@ class MoviesController < ApplicationController
     @movie = Movie.find_by_slug(params[:id])
 
     respond_to do |format|
-      format.html
-      format.json { render json: @movie }
+      format.html do
+        @user_rating = current_user.ratings.where(movie: @movie).first || @movie.ratings.build
+      end
+      format.json do
+        render json: @movie
+      end
     end
   end
 
@@ -58,11 +62,4 @@ class MoviesController < ApplicationController
 
     redirect_back fallback_location: movies_path, notice: "Movie was successfully destroyed."
   end
-
-  private
-
-  def user_rating
-    @user_rating ||= current_user.ratings.where(movie: @movie).first || @movie.ratings.build
-  end
-  helper_method :user_rating
 end

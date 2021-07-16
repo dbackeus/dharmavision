@@ -33,8 +33,8 @@
 <div class="text-center mb-8">
   <strong>Your rating</strong><br>
   <% if user_signed_in? %>
-    <dv-rater id="rater" value="<%= user_rating.rating %>" data-movie-id="<%= @movie.to_param %>"></dv-rater>
-    <span id="rater-score-text"><%= user_rating.rating %></span>/10
+    <dv-rater id="rater" value="<%= @user_rating.rating %>" data-movie-id="<%= @movie.to_param %>"></dv-rater>
+    <span id="rater-score-text"><%= @user_rating.rating %></span>/10
   <% else %>
     <p><%= link_to "Sign in", new_session_path %> to add a rating...</p>
   <% end %>
