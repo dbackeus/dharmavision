@@ -69,6 +69,9 @@
             <div class="hidden md:block flex-grow relative">
               <form action="<%= search_movies_path %>">
                 <input id="movie-search" tabindex="2" class="w-full rounded border-1 py-2 px-3 text-gray-800" type="text" name="query" autocomplete="off" placeholder="Search movie title" />
+                <span id="movie-spinner" class="absolute transition opacity-0 right-9 top-3 w-5 h-5">
+                  <%= image_tag "spinner.gif" %>
+                </span>
                 <div id="movie-search-results"></div>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-full w-5 absolute top-0 right-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />

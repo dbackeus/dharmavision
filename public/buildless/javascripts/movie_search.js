@@ -1,12 +1,13 @@
 import debounce from "javascripts/utils/debounce"
 
 let resultList
-let selectedIndex
+let spinner
 let input
+let selectedIndex
 
 document.addEventListener("turbolinks:load", () => {
   resultList = document.getElementById("movie-search-results")
-
+  spinner = document.getElementById("movie-spinner")
   input = document.getElementById("movie-search")
   input.addEventListener("input", debounce(onSearchInput, 200))
   input.addEventListener("keydown", onKeyDown)
@@ -15,10 +16,14 @@ document.addEventListener("turbolinks:load", () => {
 async function onSearchInput(e) {
   selectedIndex = -1
 
+  spinner.classList.add("opacity-100")
+
   const query = e.target.value
   const html = await fetch(`/movies/search?query=${query}`, {
     headers: { 'X-Requested-With': 'XMLHttpRequest' }
   }).then(response => response.text())
+
+  spinner.classList.remove("opacity-100")
 
   resultList.style.display = html ? "block" : "none"
   resultList.innerHTML = html
