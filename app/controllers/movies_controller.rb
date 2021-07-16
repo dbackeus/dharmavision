@@ -56,14 +56,10 @@ class MoviesController < ApplicationController
 
     @movie.destroy
 
-    redirect_to :back, notice: "Movie was successfully destroyed."
+    redirect_back fallback_location: movies_path, notice: "Movie was successfully destroyed."
   end
 
   private
-
-  def movie_params
-
-  end
 
   def user_rating
     @user_rating ||= current_user.ratings.where(movie: @movie).first || @movie.ratings.build
