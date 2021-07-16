@@ -17,19 +17,20 @@
         <td class="w-12">
           <%= link_to image_tag(movie.poster_url(92), class: "h-16"), movie if movie.poster_url.present? %>
         </td>
-        <td style="width: 400px;">
+        <td>
           <%= link_to movie.title, movie %> (<%= movie.year %>)
         </td>
-        <td class="w-24 text-gray-500 align-middle">
-          <%= image_tag "/buildless/images/raty/star-on.png", class: "inline" %> <%= movie.ratings_count %>/5 ratings
+        <td class="w-16 sm:w-28 text-gray-500 align-middle">
+          <%= image_tag "/buildless/images/raty/star-on.png", class: "inline" %> <%= movie.ratings_count %>/5
+          <span class="hidden sm:inline">ratings</span>
         </td>
-        <td class="w-20 pr-4">
+        <td class="w-15 sm:w-20 pr-4">
           <% if movie.mpaa_rating %>
             <%= image_tag "ratings/#{movie.mpaa_rating}.png", title: long_rating(movie.mpaa_rating), class: "h-5 opacity-50" %>
           <% end %>
         </td>
         <% if admin? %>
-          <td class="hidden-xs">
+          <td class="hidden sm:table-cell">
               <%= link_to "Destroy", movie, method: :delete, data: { confirm: "Delete #{movie.title}?" } %>
           </td>
         <% end %>
