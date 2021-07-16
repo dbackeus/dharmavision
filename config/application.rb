@@ -32,8 +32,10 @@ module Dharmavision
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    # Use Rack::Deflator for gzipped assets in dev env (in production we use heroku-deflater)
-    config.middleware.use Rack::Deflater if Rails.env.development?
+    # https://github.com/romanbsd/heroku-deflater/issues/54#issuecomment-803400481
+    config.middleware.use Rack::Deflater,
+      include: Rack::Mime::MIME_TYPES.values.grep(/text|json|javascript/).uniq,
+      if: lambda { |env, status, headers, body| body.body.length > 512 }
 
     config.hosts.clear
 
