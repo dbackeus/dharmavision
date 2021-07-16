@@ -2,7 +2,7 @@ class RatingsController < ApplicationController
   # Note: Sending rating 0 will remove rating
   def create
     rating_params = params.require(:rating)
-    movie = Movie.find(rating_params[:movie_id])
+    movie = Movie.find_by_slug(rating_params[:movie_id])
 
     rating = movie.ratings.find_or_initialize_by(user: current_user)
     rating.rating = rating_params[:rating]

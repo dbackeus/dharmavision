@@ -22,7 +22,7 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.find(params[:id])
+    @movie = Movie.find_by_slug(params[:id])
 
     respond_to do |format|
       format.html
@@ -52,7 +52,7 @@ class MoviesController < ApplicationController
   def destroy
     raise "no way" unless current_user.admin?
 
-    @movie = Movie.find(params[:id])
+    @movie = Movie.find_by_slug(params[:id])
 
     @movie.destroy
 
