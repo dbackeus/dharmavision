@@ -10,7 +10,7 @@ document.addEventListener('turbolinks:load', () => {
 
   const raterScoreText = document.getElementById("rater-score-text")
 
-  rater.addEventListener("sl-change", (e) => {
+  rater.addEventListener("change", (e) => {
     const score = e.target.value
     const movieId = e.target.dataset.movieId
 
